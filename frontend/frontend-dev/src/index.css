@@ -1,0 +1,207 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --light-color: #e8f5e9;
+  --light-second: #a5d6a7;
+  --light-dark: #66bb6a;
+  --dark-color: #1b5e20;
+  background-color: var(--light-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+button:hover {
+  background-color: var(--light-dark) !important ;
+}
+
+#input {
+  background-color: #ddd;
+  padding: 20px;
+  width: 400px;
+  height: 300px;
+}
+
+#input div input {
+  z-index: 3;
+  padding: 5px;
+  border: none;
+}
+
+#input div button {
+  background-color: var(--light-second);
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+#form_registrasi form,
+#form_lupa_sandi form {
+  padding: 20px;
+  background-color: #ddd;
+}
+#form_lupa_sandi {
+  width: 400px;
+}
+
+#form_registrasi form button,
+#form_lupa_sandi form button {
+  background-color: var(--light-second);
+}
+
+#form_lupa_sandi form button {
+  padding: 10px;
+}
+
+#form_registrasi div input,
+#form_lupa_sandi form div input {
+  z-index: 3;
+  padding: 2px;
+  border: none;
+  background-color: var(--light-color);
+}
+
+#ilustrasi_login,
+#ilustrasi_registrasi,
+#lupa_sandi {
+  background-color: var(--light-second);
+  position: relative;
+}
+
+#home,
+#lokasi,
+#keluar {
+  background-color: var(--light-color);
+  padding: 20px;
+}
+
+#lokasi div section,
+#lokasi section {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--light-second);
+}
+
+#home div section {
+  padding: 20px;
+  background-color: var(--light-second);
+}
+
+#home div section img {
+  width: 230px;
+  object-fit: cover;
+}
+
+#sidebar,
+#information,
+#keluar section {
+  background-color: var(--light-second);
+  padding: 10px;
+}
+
+#information {
+  padding: 20px 10px;
+}
+
+#information section {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--light-color);
+}
+
+#analisis,
+#kalender,
+#pengaturan,
+#keluar section {
+  padding: 20px;
+}
+
+#analisis section {
+  background-color: var(--light-second);
+}
+
+#sidebar div button,
+#home div section button {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background-color: var(--light-second);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home div section button {
+  width: 40px;
+  height: 40px;
+}
+
+#pengaturan section {
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#pengaturan button {
+  background-color: var(--light-color);
+  height: 30px;
+  width: 100px;
+}
+
+#keluar section button {
+  background-color: var(--light-color);
+}
+
+#analisis section {
+  border-radius: 10px;
+  padding: 10px;
+}
+
+#input_search form {
+  background-color: var(--light-color);
+  border-radius: 10px;
+  width: 400px;
+}
+
+#input_search form button {
+  background-color: var(--light-dark);
+}
+
+.react-calendar {
+  line-height: 2em !important;
+}
+
+#form_search {
+  display: flex;
+  background-color: var(--light-second);
+  justify-content: space-between;
+}
+
+#form_search input {
+  width: 100%;
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+}
+
+/* #form_seacrh button {
+  width: 50px;
+  height: 50px;
+  background-color: red !important;
+} */

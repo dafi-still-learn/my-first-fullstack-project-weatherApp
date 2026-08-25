@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "chart.js": "^4.5.1",
+    "recharts": "^3.10.1"
+  }
+}
