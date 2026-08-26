@@ -1,8 +1,9 @@
 from fastapi import APIRouter
 from app.database.crud import buat_tabel_cuaca_terkini, buat_tabel_cuaca_prakiraan, input_cuaca_api_terkini, input_cuaca_api_prakiraan
-from app.schemas.schemas import WeatherSearch, WeatherLocation
+from app.schemas.schemas import WeatherSearch, WeatherLocation, requestChatBot
 from app.services.api_weather import weather_current, weather_forecast, weather_location_current, tiga_lokasi_terdekat
 from app.models.models import olah_data_tabel_cuaca_prakiraan, olah_data_tabel_cuaca_terkini
+from app.services.weather_AI import chatBot
 
 router = APIRouter()
 
@@ -56,3 +57,15 @@ def location_weather(data: WeatherLocation):
         'data_lokasi': data_weather_location_current,
         'tiga_lokasi_terdekat': tiga_data_weather_location_current
     }
+
+
+@router.post("/weather/chat")
+def requestChatBot(data: requestChatBot):
+    result_chatBot = chatBot(data.weather)
+
+    print(data.weather)
+    print(result_chatBot)
+
+    return (
+        result_chatBot
+    )

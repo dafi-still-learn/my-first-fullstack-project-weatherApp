@@ -39,7 +39,6 @@ function Sidebar() {
             <ChartSine></ChartSine>
           </Button>
           <Button className="cursor-pointer" onClick={handleRekomendasi}>
-            {console.log("MENU LOKASI")}
             <LocationAlt></LocationAlt>
           </Button>
           <Button className="cursor-pointer" onClick={handleKalender}>

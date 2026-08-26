@@ -14,6 +14,7 @@ function Dashboard() {
   const { weather, setWeather } = useOutletContext();
   const [date, setDate] = useState(new Date());
   const [selectedData, setSelectedData] = useState(null);
+
   const handleData = (date) => {
     const tanggal = date.toISOString().split("T")[0];
     const weatherData = weather.prakiraan.find((item) =>
@@ -33,7 +34,7 @@ function Dashboard() {
           <Navbar setWeather={setWeather}></Navbar>
           <div className="grid grid-cols-5 h-full w-full row-span-3 gap-5">
             <Cards className=" col-span-2 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
-              <div className="z-30 fixed">
+              <div className="absolute">
                 <>
                   <p>{weather?.terkini.namakota_cuaca}</p>
                   <p>{weather?.terkini.waktu}</p>
@@ -42,7 +43,7 @@ function Dashboard() {
               <img src={ilustrasi_gambar1} alt="" />
             </Cards>
             <Cards className=" col-span-3 rounded-2xl grid grid-cols-1 place-content-center h-full w-full">
-              <div className="fixed">
+              <div className="absolute">
                 <p>{weather?.terkini.cuaca}</p>
                 <p>{weather?.terkini.penjelasan}</p>
               </div>
@@ -51,14 +52,14 @@ function Dashboard() {
           </div>
           <div className="grid grid-cols-5 h-full w-full row-span-3 gap-5">
             <Cards className=" col-span-3 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
-              <div className="fixed">
+              <div className="absolute">
                 <p>{weather?.terkini.suhu}</p>
                 <p>{weather?.terkini.kelembapan}%</p>
               </div>
               <img src={ilustrasi_gambar3} alt="" />
             </Cards>
             <Cards className=" col-span-2 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
-              <div className="fixed">
+              <div className="absolute">
                 <p>{weather?.terkini.angin}m/s</p>
               </div>
               <img src={ilustrasi_gambar4} alt="" />

@@ -7,9 +7,12 @@ import { User } from "@boxicons/react";
 function Navbar({ setWeather }) {
   return (
     <>
-      <div className="row-span-1 w-full h-full grid grid-cols-1">
+      <div
+        className="row-span-1 w-full h-full grid grid-cols-1"
+        id="navbar_section"
+      >
         <Cards className="bg-amber-400 rounded-2xl grid grid-cols-5">
-          <div className="col-span-3">
+          <div className="col-span-3" id="profil_section">
             <Button className="cursor-pointer">
               <User></User>
             </Button>

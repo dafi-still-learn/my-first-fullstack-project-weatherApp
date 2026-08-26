@@ -5,9 +5,12 @@ import { useOutletContext } from "react-router-dom";
 import Diagram_suhu from "../components/diagarm_suhu";
 import Diagram_kelembapan from "../components/diagran_kelembapan";
 import Diagram_angin from "../components/Diagram_angin";
+import ChatAI from "../components/chat_AI";
+import { useState } from "react";
 
 function Analisis() {
   const { weather } = useOutletContext();
+  const [chatBot, setChatBot] = useState(null);
 
   if (!weather) {
     return <p>errorrr</p>;
@@ -32,7 +35,13 @@ function Analisis() {
           <Diagram_angin data={weather.prakiraan} />
         </Cards>
         <Cards>
-          <h1>hasil analisis</h1>
+          <h1>Hasil Analisis AI</h1>
+          <ChatAI setChatBot={setChatBot} weather={weather}></ChatAI>
+          {chatBot && (
+            <div>
+              <p>{chatBot}</p>
+            </div>
+          )}
         </Cards>
       </section>
     </section>

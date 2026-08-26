@@ -25,20 +25,25 @@ button {
   transition: 0.3s all ease-in-out;
 }
 
-button:hover {
+#navbar_section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#profil_section button:hover,
+#sidebar div button:hover {
   background-color: var(--light-dark) !important ;
 }
 
 #input {
   background-color: #ddd;
-  padding: 20px;
   width: 400px;
   height: 300px;
 }
 
 #input div input {
   z-index: 3;
-  padding: 5px;
   border: none;
 }
 
@@ -97,7 +102,7 @@ button:hover {
 }
 
 #home div section {
-  padding: 20px;
+  padding: 15px;
   background-color: var(--light-second);
 }
 
@@ -135,7 +140,7 @@ button:hover {
 }
 
 #sidebar div button,
-#home div section button {
+#profil_section button {
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -179,10 +184,6 @@ button:hover {
   width: 400px;
 }
 
-#input_search form button {
-  background-color: var(--light-dark);
-}
-
 .react-calendar {
   line-height: 2em !important;
 }
@@ -191,6 +192,7 @@ button:hover {
   display: flex;
   background-color: var(--light-second);
   justify-content: space-between;
+  overflow: hidden;
 }
 
 #form_search input {
@@ -200,8 +202,12 @@ button:hover {
   outline: none;
 }
 
-/* #form_seacrh button {
-  width: 50px;
-  height: 50px;
-  background-color: red !important;
-} */
+#btn-search {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

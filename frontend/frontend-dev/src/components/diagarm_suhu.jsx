@@ -10,11 +10,11 @@ import {
 // import { RechartsDevtools } from "@recharts/devtools";s
 
 function Diagram_suhu({ data }) {
-  console.log("INI DARI DIAGRAM ANGIN:", data);
-  console.log(
-    "DATA ANGIN:",
-    data?.map((item) => item.angin),
-  );
+  // console.log("INI DARI DIAGRAM ANGIN:", data);
+  // console.log(
+  //   "DATA ANGIN:",
+  //   data?.map((item) => item.angin),
+  // );
   return (
     <LineChart
       style={{

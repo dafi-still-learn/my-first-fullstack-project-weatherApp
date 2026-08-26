@@ -6,16 +6,17 @@ import { useState } from "react";
 function CalenderWeather({ data }) {
   const [date, setDate] = useState(new Date());
   const [selectedData, setSelectedData] = useState(null);
+
   const handleData = (date) => {
     const tanggal = date.toISOString().split("T")[0];
     const weatherData = data.find((item) => item.waktu.startsWith(tanggal));
-    console.log("ini data weather", weatherData);
-    console.log(tanggal);
+    // console.log("ini data weather", weatherData);
+    // console.log(tanggal);
 
     setSelectedData(weatherData);
   };
 
-  console.log("ini dari kalender", data);
+  // console.log("ini dari kalender", data);
   return (
     <>
       <div>
@@ -27,12 +28,14 @@ function CalenderWeather({ data }) {
             value={date}
           />
         </div>
+        <h1>prakiraan dalam waktu 6 hari kedepan</h1>
         <p>
           <span>Select Date</span> {date.toDateString()}
         </p>
         {selectedData && (
           <div>
             <h1>{selectedData.cuaca}</h1>
+            <h1>{selectedData.suhu}</h1>
             <h1>{selectedData.penjelasan}</h1>
             <h1>{selectedData.kelembapan}%</h1>
             <h1>{selectedData.angin}m/s</h1>

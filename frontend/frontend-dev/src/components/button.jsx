@@ -1,6 +1,19 @@
-function Button({ children, onClick, type = "button", className }) {
+function Button({
+  children,
+  onClick,
+  type = "button",
+  className,
+  id,
+  ...props
+}) {
   return (
-    <button onClick={onClick} type={type} className={className}>
+    <button
+      onClick={onClick}
+      type={type}
+      className={className}
+      id={id}
+      {...props}
+    >
       {children}
     </button>
   );

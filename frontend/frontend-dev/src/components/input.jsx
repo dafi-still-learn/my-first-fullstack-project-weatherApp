@@ -44,7 +44,7 @@ function Input_text({ setWeather }) {
           placeholder="masukkan kota"
           className="col-span-3"
         />
-        <Button type="submit" className="col-span-1">
+        <Button type="submit" id="btn-search" className="col-span-1">
           <SearchAlt></SearchAlt>
         </Button>
       </form>
