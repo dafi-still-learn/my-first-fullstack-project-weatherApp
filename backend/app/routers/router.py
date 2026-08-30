@@ -47,11 +47,6 @@ def location_weather(data: WeatherLocation):
     tiga_data_weather_location_current = tiga_lokasi_terdekat(
         data.latitude, data.longitude
     )
-    print("DATA LATITUDE:", data.latitude)
-    print("DATA LONGITUDE:", data.longitude)
-
-    print("HASIL DATA LOKASI:", data_weather_location_current)
-    print("HASIL DATA 3 LOKASI:", tiga_data_weather_location_current)
 
     return {
         'data_lokasi': data_weather_location_current,
@@ -63,9 +58,4 @@ def location_weather(data: WeatherLocation):
 def requestChatBot(data: requestChatBot):
     result_chatBot = chatBot(data.weather)
 
-    print(data.weather)
-    print(result_chatBot)
-
-    return (
-        result_chatBot
-    )
+    return result_chatBot

@@ -5,7 +5,7 @@ import { useOutletContext } from "react-router-dom";
 import Diagram_suhu from "../components/diagarm_suhu";
 import Diagram_kelembapan from "../components/diagran_kelembapan";
 import Diagram_angin from "../components/Diagram_angin";
-import ChatAI from "../components/chat_AI";
+import ChatBot from "../components/chat_AI";
 import { useState } from "react";
 
 function Analisis() {
@@ -23,20 +23,20 @@ function Analisis() {
         id="analisis"
       >
         <Cards>
-          <h1>digram analisis suhu</h1>
+          <h1>Diagram Analisis Suhu</h1>
           <Diagram_suhu data={weather.prakiraan} />
         </Cards>
         <Cards>
-          <h1>digram analisis kelembapan</h1>
+          <h1>Diagram Analisis Kelembapan</h1>
           <Diagram_kelembapan data={weather.prakiraan} />
         </Cards>
         <Cards>
-          <h1>digram analisis angin</h1>
+          <h1>Diagram Analisis Angin</h1>
           <Diagram_angin data={weather.prakiraan} />
         </Cards>
         <Cards>
           <h1>Hasil Analisis AI</h1>
-          <ChatAI setChatBot={setChatBot} weather={weather}></ChatAI>
+          <ChatBot setChatBot={setChatBot} weather={weather}></ChatBot>
           {chatBot && (
             <div>
               <p>{chatBot}</p>

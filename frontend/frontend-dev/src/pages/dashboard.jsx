@@ -16,7 +16,7 @@ function Dashboard() {
   const [selectedData, setSelectedData] = useState(null);
 
   const handleData = (date) => {
-    const tanggal = date.toISOString().split("T")[0];
+    const tanggal = date.toLocaleDateString("en-CA");
     const weatherData = weather.prakiraan.find((item) =>
       item.waktu.startsWith(tanggal),
     );
@@ -36,7 +36,9 @@ function Dashboard() {
             <Cards className=" col-span-2 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
               <div className="absolute">
                 <>
+                  <h3>nama kota:</h3>
                   <p>{weather?.terkini.namakota_cuaca}</p>
+                  <h3>waktu:</h3>
                   <p>{weather?.terkini.waktu}</p>
                 </>
               </div>
@@ -44,7 +46,9 @@ function Dashboard() {
             </Cards>
             <Cards className=" col-span-3 rounded-2xl grid grid-cols-1 place-content-center h-full w-full">
               <div className="absolute">
+                <h3>cuaca:</h3>
                 <p>{weather?.terkini.cuaca}</p>
+                <h3>rincian:</h3>
                 <p>{weather?.terkini.penjelasan}</p>
               </div>
               <img src={ilustrasi_gambar2} alt="" />
@@ -53,13 +57,16 @@ function Dashboard() {
           <div className="grid grid-cols-5 h-full w-full row-span-3 gap-5">
             <Cards className=" col-span-3 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
               <div className="absolute">
+                <h3>suhu:</h3>
                 <p>{weather?.terkini.suhu}</p>
+                <h3>kelembapan:</h3>
                 <p>{weather?.terkini.kelembapan}%</p>
               </div>
               <img src={ilustrasi_gambar3} alt="" />
             </Cards>
             <Cards className=" col-span-2 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
               <div className="absolute">
+                <h3>kecepatan angin:</h3>
                 <p>{weather?.terkini.angin}m/s</p>
               </div>
               <img src={ilustrasi_gambar4} alt="" />
@@ -83,10 +90,12 @@ function Dashboard() {
             </div>
           </Cards>
           <Cards>
+            <h1 className="mb-2">Prakiraan cuaca</h1>
             {selectedData && (
               <div>
                 <h1>{selectedData.cuaca}</h1>
                 <h1>{selectedData.penjelasan}</h1>
+                <h1>{selectedData.suhu}</h1>
                 <h1>{selectedData.kelembapan}%</h1>
                 <h1>{selectedData.angin}m/s</h1>
               </div>

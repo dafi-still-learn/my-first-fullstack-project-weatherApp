@@ -23,22 +23,26 @@ function Login() {
             className="grid grid-cols-1 justify-between rounded-b-3xl"
           >
             <div className="grid grid-cols-1">
-              <h1 className="mb-5">Halo, Selamat Datang</h1>
-              <label htmlFor="email_input">Masukkan Email</label>
-              <input
-                type="email"
-                name="email_input"
-                placeholder="email"
-                className="bg-amber-50 p-10"
-              />
+              <h1 className="mb-5">Halo, Selamat Datang Dashboard Cuaca</h1>
+              <label htmlFor="email_input" className="flex flex-col">
+                Email
+                <input
+                  type="email"
+                  name="email_input"
+                  placeholder="masukkan email"
+                  className="bg-amber-50 p-10"
+                />
+              </label>
 
-              <label htmlFor="password_input">Masukkan Password</label>
-              <input
-                type="password"
-                name="password_input"
-                placeholder="password"
-                className="bg-amber-50 p-10"
-              />
+              <label htmlFor="password_input" className="flex flex-col">
+                Password
+                <input
+                  type="password"
+                  name="password_input"
+                  placeholder="masukkan password"
+                  className="bg-amber-50 p-10"
+                />
+              </label>
               <button
                 type="submit"
                 className="mt-3 w-20 "
@@ -55,7 +59,7 @@ function Login() {
           </form>
         </section>
         <section id="ilustrasi_login" className="relative">
-          <h1 className="fixed">PREDIKSI SEBELUM TERJADI</h1>
+          <h1>ANALISIS CUACA PINTAR</h1>
           <img src={ilustasi_aplikasi} alt="" />
         </section>
       </section>

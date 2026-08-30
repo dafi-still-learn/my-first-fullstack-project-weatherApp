@@ -11,7 +11,7 @@ client = genai.Client(api_key=get_api_openAI)
 def chatBot(weather):
     if (weather):
         weather_text = f"""
-        berikan aku kesimpulan dari data prakiraan cuaca kota ini:
+        berikan aku beberapa point dari data cuaca ini, pertama kesimpulan kedua suhu terpanas, suhu terdingin, suhu ternyaman, ketiga rekomendasi apa yang perlu disiapkan untuk menghadapi cuaca tersebut kalau kebanyakan cuaca nya enak dan nyaman kasih ucapan selamat menikmati hari-hari mu dengan penjelasan pendek:
         {weather}
         """
 
@@ -19,4 +19,6 @@ def chatBot(weather):
             model="gemini-3.6-flash",
             contents=weather_text
         )
-        return interaction.text
+
+        data_analisis_ai = interaction.text
+        return data_analisis_ai

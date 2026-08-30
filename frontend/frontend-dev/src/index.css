@@ -39,12 +39,15 @@ button {
 #input {
   background-color: #ddd;
   width: 400px;
-  height: 300px;
+  height: 350px;
+  padding: 15px;
 }
 
-#input div input {
+#input div label input {
   z-index: 3;
   border: none;
+  padding: 8px;
+  outline: none;
 }
 
 #input div button {
@@ -80,11 +83,20 @@ button {
   background-color: var(--light-color);
 }
 
-#ilustrasi_login,
 #ilustrasi_registrasi,
 #lupa_sandi {
   background-color: var(--light-second);
   position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#ilustrasi_login h1 {
+  position: absolute;
+  font-size: 42px;
+  font-weight: bold;
+  top: 350px;
+  color: var(--dark-color);
 }
 
 #home,
@@ -137,6 +149,10 @@ button {
 
 #analisis section {
   background-color: var(--light-second);
+}
+
+#profil_section {
+  align-items: center;
 }
 
 #sidebar div button,
@@ -210,4 +226,17 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#ai_button {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--light-color);
+  transition: all 0.3s ease;
+}
+
+#ai_button:hover {
+  background-color: var(--light-dark);
+  color: white;
 }

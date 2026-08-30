@@ -12,10 +12,11 @@ function Navbar({ setWeather }) {
         id="navbar_section"
       >
         <Cards className="bg-amber-400 rounded-2xl grid grid-cols-5">
-          <div className="col-span-3" id="profil_section">
+          <div className="col-span-3 flex gap-3 font-bold" id="profil_section">
             <Button className="cursor-pointer">
               <User></User>
             </Button>
+            <h3>Nur Fauzan Muhammad Khadafi</h3>
           </div>
           <div
             className="col-span-2 flex justify-between gap-10"
