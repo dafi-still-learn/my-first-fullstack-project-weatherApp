@@ -22,3 +22,14 @@ class weatherData(BaseModel):
 
 class requestChatBot(BaseModel):
     weather: list[weatherData]
+
+
+class GetUsers(BaseModel):
+    email: str
+    username: str
+    password: str
+
+
+class ValidateUser(BaseModel):
+    username: str
+    password: str

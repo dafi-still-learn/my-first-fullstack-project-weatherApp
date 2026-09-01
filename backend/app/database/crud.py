@@ -109,27 +109,25 @@ def tampilkan_data_cuaca_prakiraan():
 
         print(df)
         return data
-        # df = df.astype(object).where(df.notna(), None)
-        # return df.to_dict(orient='records')
     finally:
         conn.close()
 
 
-# PENGOLAHAN DATA ANALISIS AI
-# def penyimpanan_hasil_analisis_ai():
-#     conn = tabel_cuaca()
-#     try:
-#         cursor = conn.cursor()
-#         cursor.execute("""
-#         CREATE TABLE IF NOT EXISTS table_hasil_analisis_AI(
-#             id INTEGER PRIMARY KEY AUTOINCREMENT,
-#             waktu DATETIME,
-#             analisis_AI TEXT)
-#         """)
-#         conn.commit()
+#
+def penyimpanan_hasil_analisis_ai():
+    conn = tabel_cuaca()
+    try:
+        cursor = conn.cursor()
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS table_hasil_analisis_AI(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            waktu DATETIME,
+            analisis_AI TEXT)
+        """)
+        conn.commit()
 
-#     finally:
-#         conn.close()
+    finally:
+        conn.close()
 
 
 # def input_hasil_analisis_AI(data):

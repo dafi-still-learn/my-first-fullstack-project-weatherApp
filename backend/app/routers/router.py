@@ -1,15 +1,17 @@
 from fastapi import APIRouter
 from app.database.crud import buat_tabel_cuaca_terkini, buat_tabel_cuaca_prakiraan, input_cuaca_api_terkini, input_cuaca_api_prakiraan
-from app.schemas.schemas import WeatherSearch, WeatherLocation, requestChatBot
+from app.schemas.schemas import WeatherSearch, WeatherLocation, requestChatBot, ValidateUser, GetUsers
 from app.services.api_weather import weather_current, weather_forecast, weather_location_current, tiga_lokasi_terdekat
 from app.models.models import olah_data_tabel_cuaca_prakiraan, olah_data_tabel_cuaca_terkini
 from app.services.weather_AI import chatBot
+from app.database.account_user import input_akun_user, buat_tabel_user, validate_users, validate_register_users, tampilkan_database_user
 
 router = APIRouter()
 
 
 buat_tabel_cuaca_terkini()
 buat_tabel_cuaca_prakiraan()
+buat_tabel_user()
 
 
 @router.get("/cuaca_terkini")
@@ -59,3 +61,30 @@ def requestChatBot(data: requestChatBot):
     result_chatBot = chatBot(data.weather)
 
     return result_chatBot
+
+
+@router.post("/register_user")
+def getUsers(data: GetUsers):
+    validate = validate_register_users(data.email, data.username)
+
+    if not validate:
+        input_akun_user(data.email, data.username, data.password)
+
+        print("data berhasil dikirim")
+
+        return True
+
+    return False
+
+
+@router.post("/login_user")
+def valdiateUsers(data: ValidateUser):
+    result = validate_users(data.username, data.password)
+
+    if result:
+        tampilkan_database_user()
+        return {
+            "succes": True
+        }
+
+    return False
