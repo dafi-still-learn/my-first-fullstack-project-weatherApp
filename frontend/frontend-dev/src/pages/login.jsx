@@ -19,6 +19,7 @@ function Login() {
 
     console.log("tes terakhir telah terkirim, backend merespons", result);
 
+    console.log(result);
     if (result) {
       navigate("/dashboard");
     }
@@ -29,9 +30,11 @@ function Login() {
   };
   function handleLupa_password() {
     navigate("/lupa_sandi");
+    console.log("tes ini dari lupa passwrord");
   }
   function handle_register() {
     navigate("/register");
+    console.log("ini dari register");
   }
 
   return (

@@ -1,5 +1,6 @@
 from app.database.database1 import tabel_cuaca
 import pandas as pd
+from datetime import datetime
 
 
 def buat_tabel_user():
@@ -8,11 +9,12 @@ def buat_tabel_user():
         cursor = conn.cursor()
         cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS tabel_user (
+            CREATE TABLE IF NOT EXISTS tabel_user_terbaru (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 email TEXT,
                 username TEXT,
-                password TEXT)
+                password TEXT,
+                waktu TEXT)
             """)
         conn.commit()
 
@@ -20,14 +22,14 @@ def buat_tabel_user():
         conn.close()
 
 
-def input_akun_user(email, username, password):
+def input_akun_user(email, username, password, waktu):
     conn = tabel_cuaca()
     try:
         cursor = conn.cursor()
         cursor.execute("""
-            INSERT INTO tabel_user(email, username, password)
-            VALUES(?, ?, ?)               
-        """, (email, username, password))
+            INSERT INTO tabel_user_terbaru(email, username, password, waktu)
+            VALUES(?, ?, ?, ?)               
+        """, (email, username, password, waktu))
         conn.commit()
     finally:
         conn.close()
@@ -41,7 +43,7 @@ def validate_register_users(email, username):
         cursor.execute(
             """
             SELECT email
-            FROM tabel_user
+            FROM tabel_user_terbaru
             WHERE email = ?
             """, (email,)
         )
@@ -51,7 +53,7 @@ def validate_register_users(email, username):
         cursor.execute(
             """
             SELECT username
-            FROM tabel_user
+            FROM tabel_user_terbaru
             WHERE username = ?
             """, (username,)
         )
@@ -79,7 +81,7 @@ def validate_users(username, password):
         cursor.execute(
             """
             SELECT username, password
-            FROM tabel_user
+            FROM tabel_user_terbaru
             WHERE username = ?
             """, (username,)
         )
@@ -104,15 +106,15 @@ def tampilkan_database_user():
         cursor = conn.cursor()
         cursor.execute(
             """
-            SELECT * FROM tabel_user
+            SELECT * FROM tabel_user_terbaru
             """
         )
 
         data = cursor.fetchall()
 
         df = pd.DataFrame(
-            data, columns=["id", "email", "username", "password"])
-
+            data, columns=["id", "email", "username", "password", "waktu"])
+        print("ini dari validasi user register")
         print(df)
 
     finally:
