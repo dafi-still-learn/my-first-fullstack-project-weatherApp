@@ -19,7 +19,7 @@ function App() {
       <Route path="/lupa_sandi" element={<Lupa_sandi />} />
       <Route path="/register" element={<Register />} />
       <Route path="/" element={<WeatherPage />}>
-        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="dashboard" element={<Dashboard />}></Route>
         <Route path="analisis" element={<Analisis />} />
         <Route path="lokasi" element={<WeatherLocation />}>
           <Route path="lokasi_rekomendasi" element={<Lokasi_rekomendasi />} />

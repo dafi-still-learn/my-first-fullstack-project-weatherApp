@@ -9,11 +9,19 @@ import ilustrasi_gambar4 from "../assets/beach house-bro.svg";
 import Navbar from "../components/navbar";
 import { useOutletContext } from "react-router-dom";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import Make_profil from "../components/make_profil";
 
 function Dashboard() {
+  const location = useLocation();
+  const userId = location.state?.user_id;
+  const profilComplete = location.state?.profil_complete;
   const { weather, setWeather } = useOutletContext();
   const [date, setDate] = useState(new Date());
   const [selectedData, setSelectedData] = useState(null);
+  // const [showProfil, setShowProfil] = useState(profilComplete);
+
+  console.log("ini user id dari dashboard", userId);
 
   const handleData = (date) => {
     const tanggal = date.toLocaleDateString("en-CA");
@@ -26,6 +34,7 @@ function Dashboard() {
   return (
     <>
       <section id="dashboard" className="grid grid-cols-20 h-screen w-screen">
+        {profilComplete && <Make_profil userId={userId} />}
         <Sidebar></Sidebar>
         <section
           id="home"
@@ -34,7 +43,7 @@ function Dashboard() {
           <Navbar setWeather={setWeather}></Navbar>
           <div className="grid grid-cols-5 h-full w-full row-span-3 gap-5">
             <Cards className=" col-span-2 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
-              <div className="absolute">
+              <div>
                 <>
                   <h3>nama kota:</h3>
                   <p>{weather?.terkini.namakota_cuaca}</p>
@@ -45,7 +54,7 @@ function Dashboard() {
               <img src={ilustrasi_gambar1} alt="" />
             </Cards>
             <Cards className=" col-span-3 rounded-2xl grid grid-cols-1 place-content-center h-full w-full">
-              <div className="absolute">
+              <div>
                 <h3>cuaca:</h3>
                 <p>{weather?.terkini.cuaca}</p>
                 <h3>rincian:</h3>
@@ -56,7 +65,7 @@ function Dashboard() {
           </div>
           <div className="grid grid-cols-5 h-full w-full row-span-3 gap-5">
             <Cards className=" col-span-3 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
-              <div className="absolute">
+              <div>
                 <h3>suhu:</h3>
                 <p>{weather?.terkini.suhu}</p>
                 <h3>kelembapan:</h3>
@@ -65,7 +74,7 @@ function Dashboard() {
               <img src={ilustrasi_gambar3} alt="" />
             </Cards>
             <Cards className=" col-span-2 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
-              <div className="absolute">
+              <div>
                 <h3>kecepatan angin:</h3>
                 <p>{weather?.terkini.angin}m/s</p>
               </div>

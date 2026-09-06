@@ -1,10 +1,11 @@
 from fastapi import APIRouter
 from app.database.crud import buat_tabel_cuaca_terkini, buat_tabel_cuaca_prakiraan, input_cuaca_api_terkini, input_cuaca_api_prakiraan
-from app.schemas.schemas import WeatherSearch, WeatherLocation, requestChatBot, ValidateUser, GetUsers
+from app.schemas.schemas import WeatherSearch, WeatherLocation, requestChatBot, ValidateUser, GetUsers, ValidateProfil
 from app.services.api_weather import weather_current, weather_forecast, weather_location_current, tiga_lokasi_terdekat
-from app.models.models import olah_data_tabel_cuaca_prakiraan, olah_data_tabel_cuaca_terkini
+from app.models.models import olah_data_tabel_cuaca_prakiraan, olah_data_tabel_cuaca_terkini, olah_data_profil_users
 from app.services.weather_AI import chatBot
 from app.database.account_user import input_akun_user, buat_tabel_user, validate_users, validate_register_users, tampilkan_database_user
+from app.database.profil_user import input_users_profil, tabel_users_profil, tampilkan_data_users_profil, validate_data_users_profil
 from datetime import datetime
 router = APIRouter()
 
@@ -12,6 +13,7 @@ router = APIRouter()
 buat_tabel_cuaca_terkini()
 buat_tabel_cuaca_prakiraan()
 buat_tabel_user()
+tabel_users_profil()
 
 
 @router.get("/cuaca_terkini")
@@ -84,9 +86,28 @@ def valdiateUsers(data: ValidateUser):
 
     if result:
         tampilkan_database_user()
+        print(result['user_id'])
         return {
-            "succes": True
+            "succes": result["succes"],
+            "user_id": result["user_id"]
         }
 
     else:
         return False
+
+
+@router.post("/profil")
+def profil_data_users(data: ValidateProfil):
+    result = input_users_profil(
+        data.nama_panjang, data.nama_panggilan, data.umur)
+
+    tampilkan_data_users_profil()
+    validate_data_users_profil(data.user_Id)
+    return result
+
+
+@router.get("/profil/data")
+def get_profil_data_users():
+    data = olah_data_profil_users()
+
+    return data

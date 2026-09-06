@@ -1,6 +1,5 @@
 from app.database.database1 import tabel_cuaca
 import pandas as pd
-from datetime import datetime
 
 
 def buat_tabel_user():
@@ -80,7 +79,7 @@ def validate_users(username, password):
         cursor = conn.cursor()
         cursor.execute(
             """
-            SELECT username, password
+            SELECT id, username, password
             FROM tabel_user_terbaru
             WHERE username = ?
             """, (username,)
@@ -94,7 +93,10 @@ def validate_users(username, password):
             return False
 
         conn.commit()
-        return True
+        return {
+            "user_id": user[0],
+            "succes": True
+        }
     finally:
         conn.close()
 

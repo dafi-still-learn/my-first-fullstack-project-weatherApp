@@ -21,7 +21,12 @@ function Login() {
 
     console.log(result);
     if (result) {
-      navigate("/dashboard");
+      navigate("/dashboard", {
+        state: {
+          user_id: result.user_id,
+          profil_complete: result.succes,
+        },
+      });
     }
 
     if (!result) {

@@ -119,7 +119,7 @@ button {
 }
 
 #home div section img {
-  width: 230px;
+  width: 150px;
   object-fit: cover;
 }
 
@@ -239,4 +239,34 @@ button {
 #ai_button:hover {
   background-color: var(--light-dark);
   color: white;
+}
+
+#make_profil {
+  width: 700px;
+  padding: 10px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--light-color);
+}
+
+#make_profil form {
+  padding: 10px;
+}
+
+#make_profil form label {
+  background-color: var(--light-second);
+  display: flex;
+  padding: 5px;
+  gap: 10px;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#make_profil button {
+  width: 100px;
+  height: 30px;
+  background-color: var(--light-dark);
 }

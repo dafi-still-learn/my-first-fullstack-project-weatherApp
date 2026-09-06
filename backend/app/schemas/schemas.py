@@ -33,3 +33,10 @@ class GetUsers(BaseModel):
 class ValidateUser(BaseModel):
     username: str
     password: str
+
+
+class ValidateProfil(BaseModel):
+    user_Id: int
+    nama_panjang: str
+    nama_panggilan: str
+    umur: str

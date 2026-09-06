@@ -128,35 +128,3 @@ def penyimpanan_hasil_analisis_ai():
 
     finally:
         conn.close()
-
-
-# def input_hasil_analisis_AI(data):
-#     conn = tabel_cuaca()
-#     print("INI DARI INPUT TABEL AI")
-#     try:
-#         cursor = conn.cursor()
-#         cursor.execute("""
-#                 INSERT INTO table_hasil_analisis_AI(waktu, analisis_AI)
-#                 VALUES(?, ?)
-#                 """, (data["waktu"], data["text_ai"]))
-
-#         conn.commit()
-#         print("IN DARI INPUT AI PRINT")
-#     finally:
-#         conn.close()
-
-
-# def tampilka_hasil_analisis_AI():
-#     conn = tabel_cuaca()
-#     try:
-#         cursor = conn.cursor()
-#         cursor.execute("""
-#             SELECT * FROM table_hasil_analisis_AI
-#             """)
-
-#         data = cursor.fetchall()
-#         print(data)
-
-#         return data
-#     finally:
-#         conn.close()

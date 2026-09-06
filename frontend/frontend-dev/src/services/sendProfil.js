@@ -1,19 +1,15 @@
-export async function sendProfil(
-  gambar,
-  nama_panjang,
-  nama_panggilan,
-  tanggal_lahir,
-) {
-  const response = await fetch("http://localhost:8000/profil_user", {
+export async function sendProfil(user_Id, nama_panjang, nama_panggilan, umur) {
+  console.log("INI DARI SENDPROFIL");
+  const response = await fetch("http://localhost:8000/profil", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      gambar: gambar,
+      user_Id: user_Id,
       nama_panjang: nama_panjang,
       nama_panggilan: nama_panggilan,
-      tanggal_lahir: tanggal_lahir,
+      umur: umur,
     }),
   });
 
