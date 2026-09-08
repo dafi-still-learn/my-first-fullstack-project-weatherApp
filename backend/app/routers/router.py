@@ -1,11 +1,11 @@
 from fastapi import APIRouter
 from app.database.crud import buat_tabel_cuaca_terkini, buat_tabel_cuaca_prakiraan, input_cuaca_api_terkini, input_cuaca_api_prakiraan
-from app.schemas.schemas import WeatherSearch, WeatherLocation, requestChatBot, ValidateUser, GetUsers, ValidateProfil
+from app.schemas.schemas import WeatherSearch, WeatherLocation, requestChatBot, ValidateUser, GetUsers, ValidateProfil, GetUserID
 from app.services.api_weather import weather_current, weather_forecast, weather_location_current, tiga_lokasi_terdekat
 from app.models.models import olah_data_tabel_cuaca_prakiraan, olah_data_tabel_cuaca_terkini, olah_data_profil_users
 from app.services.weather_AI import chatBot
 from app.database.account_user import input_akun_user, buat_tabel_user, validate_users, validate_register_users, tampilkan_database_user
-from app.database.profil_user import input_users_profil, tabel_users_profil, tampilkan_data_users_profil, validate_data_users_profil
+from app.database.profil_user import input_users_profil, tabel_users_profil, tampilkan_data_users_profil, validate_data_users_profil, ambil_data_profil_user, update_data_users_profil
 from datetime import datetime
 router = APIRouter()
 
@@ -86,9 +86,10 @@ def valdiateUsers(data: ValidateUser):
 
     if result:
         tampilkan_database_user()
-        print(result['user_id'])
+        tampilkan_data_users_profil()
+        print(result["user_id"])
         return {
-            "succes": result["succes"],
+            "success": result["success"],
             "user_id": result["user_id"]
         }
 
@@ -99,15 +100,22 @@ def valdiateUsers(data: ValidateUser):
 @router.post("/profil")
 def profil_data_users(data: ValidateProfil):
     result = input_users_profil(
-        data.nama_panjang, data.nama_panggilan, data.umur)
+        data.user_Id, data.nama_panjang, data.nama_panggilan, data.umur)
 
     tampilkan_data_users_profil()
     validate_data_users_profil(data.user_Id)
+    print("INI DARI DATABASE PROFIL", data.user_Id)
     return result
 
 
+@router.put("/profil")
+def update_profil_data_users(data: ValidateProfil):
+    update_data_users_profil(
+        data.user_Id, data.nama_panjang, data.nama_panggilan, data.umur)
+
+
 @router.get("/profil/data")
-def get_profil_data_users():
-    data = olah_data_profil_users()
+def get_profil_data_users(user_id: int):
+    data = ambil_data_profil_user(user_id)
 
     return data

@@ -6,6 +6,7 @@ import {
   Gear,
   CalendarAlt,
   LocationAlt,
+  User,
 } from "@boxicons/react";
 
 function Sidebar() {
@@ -25,6 +26,9 @@ function Sidebar() {
   function handlePengaturan() {
     navigate("/pengaturan");
   }
+  function handleProfil() {
+    navigate("/profil");
+  }
   return (
     <>
       <section
@@ -40,6 +44,9 @@ function Sidebar() {
           </Button>
           <Button className="cursor-pointer" onClick={handleRekomendasi}>
             <LocationAlt></LocationAlt>
+          </Button>
+          <Button className="cursor-pointer" onClick={handleProfil}>
+            <User></User>
           </Button>
           <Button className="cursor-pointer" onClick={handleKalender}>
             <CalendarAlt></CalendarAlt>

@@ -40,3 +40,7 @@ class ValidateProfil(BaseModel):
     nama_panjang: str
     nama_panggilan: str
     umur: str
+
+
+class GetUserID(BaseModel):
+    user_Id: int

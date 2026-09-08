@@ -3,8 +3,19 @@ import Input_text from "./input";
 import Cards from "./card";
 import "../index.css";
 import { User } from "@boxicons/react";
+import { useNavigate } from "react-router-dom";
 
-function Navbar({ setWeather }) {
+function Navbar({ setWeather, data_profil }) {
+  const navigate = useNavigate();
+
+  function handleProfil() {
+    navigate(
+      "/profil" <
+        {
+          data_profil: data_profil,
+        },
+    );
+  }
   return (
     <>
       <div
@@ -13,7 +24,7 @@ function Navbar({ setWeather }) {
       >
         <Cards className="bg-amber-400 rounded-2xl grid grid-cols-5">
           <div className="col-span-3 flex gap-3 font-bold" id="profil_section">
-            <Button className="cursor-pointer">
+            <Button className="cursor-pointer" onClick={handleProfil}>
               <User></User>
             </Button>
             <h3>Nur Fauzan Muhammad Khadafi</h3>

@@ -8,7 +8,7 @@ def buat_tabel_user():
         cursor = conn.cursor()
         cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS tabel_user_terbaru (
+            CREATE TABLE IF NOT EXISTS tabel_user_cuaca_1 (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 email TEXT,
                 username TEXT,
@@ -26,7 +26,7 @@ def input_akun_user(email, username, password, waktu):
     try:
         cursor = conn.cursor()
         cursor.execute("""
-            INSERT INTO tabel_user_terbaru(email, username, password, waktu)
+            INSERT INTO tabel_user_cuaca_1(email, username, password, waktu)
             VALUES(?, ?, ?, ?)               
         """, (email, username, password, waktu))
         conn.commit()
@@ -42,7 +42,7 @@ def validate_register_users(email, username):
         cursor.execute(
             """
             SELECT email
-            FROM tabel_user_terbaru
+            FROM tabel_user_cuaca_1
             WHERE email = ?
             """, (email,)
         )
@@ -52,7 +52,7 @@ def validate_register_users(email, username):
         cursor.execute(
             """
             SELECT username
-            FROM tabel_user_terbaru
+            FROM tabel_user_cuaca_1
             WHERE username = ?
             """, (username,)
         )
@@ -80,7 +80,7 @@ def validate_users(username, password):
         cursor.execute(
             """
             SELECT id, username, password
-            FROM tabel_user_terbaru
+            FROM tabel_user_cuaca_1
             WHERE username = ?
             """, (username,)
         )
@@ -93,9 +93,10 @@ def validate_users(username, password):
             return False
 
         conn.commit()
+        print("INI DARI VALIDATE USERS LOGIN", user[0])
         return {
             "user_id": user[0],
-            "succes": True
+            "success": True
         }
     finally:
         conn.close()
@@ -108,7 +109,7 @@ def tampilkan_database_user():
         cursor = conn.cursor()
         cursor.execute(
             """
-            SELECT * FROM tabel_user_terbaru
+            SELECT * FROM tabel_user_cuaca_1
             """
         )
 

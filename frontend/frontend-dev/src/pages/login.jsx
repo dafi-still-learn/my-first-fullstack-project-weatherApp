@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { sendLogin } from "../services/sendLogin";
 import { useState } from "react";
 import ilustasi_aplikasi from "../assets/Weather-bro.svg";
+import { getDataProfil } from "../services/getDataProfil";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -17,19 +18,36 @@ function Login() {
 
     const result = await sendLogin(username, password);
 
-    console.log("tes terakhir telah terkirim, backend merespons", result);
+    console.log(
+      "tes terakhir telah terkirim, backend merespons",
+      result.user_id,
+    );
 
-    console.log(result);
-    if (result) {
-      navigate("/dashboard", {
-        state: {
-          user_id: result.user_id,
-          profil_complete: result.succes,
-        },
-      });
+    if (result.success) {
+      const result_profil = await getDataProfil(result.user_id);
+
+      console.log("INI DATA DARI PROFIL", result_profil);
+      if (result_profil.success) {
+        console.log("INI HASIL NYA TRUE DARI PERCABANGAN PROFIL DATAS");
+        navigate("/dashboard", {
+          state: {
+            user_id: result.user_id,
+            data_profil: result_profil.data,
+          },
+        });
+      }
+      if (result_profil === false) {
+        console.log("INI HASIL NYA FALSE DARI PERCABANGAN PROFIL DATAS");
+        navigate("/dashboard", {
+          state: {
+            user_id: result.user_id,
+            profil_complete: result.success,
+          },
+        });
+      }
     }
 
-    if (!result) {
+    if (!result.success) {
       console.log("AKUN ADA SALAH / TIDAK TERSEDIA");
     }
   };

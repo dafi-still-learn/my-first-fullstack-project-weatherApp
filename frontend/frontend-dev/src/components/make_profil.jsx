@@ -2,7 +2,7 @@ import { useState } from "react";
 import { sendProfil } from "../services/sendProfil";
 import "../index.css";
 
-function Make_profil({ userId }) {
+function Make_profil({ userId, onclose }) {
   const [namaAsli, setNamaAsli] = useState("");
   const [namaPanggilan, setNamaPanggilan] = useState("");
   const [tanggalLahir, setTanggalLahir] = useState("");
@@ -10,7 +10,7 @@ function Make_profil({ userId }) {
   console.log("INI USER ID DARI PROFIL", userId);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("INI DARI FORM PROFIL");
+    console.log("INI DARI FORM PROFIL", userId);
 
     const result = await sendProfil(
       userId,
@@ -22,6 +22,7 @@ function Make_profil({ userId }) {
     console.log({ userId, namaAsli, namaPanggilan, tanggalLahir, result });
     if (result === true) {
       console.log("data sudah terisi");
+      onclick = onclose();
     }
 
     if (result === false) {
