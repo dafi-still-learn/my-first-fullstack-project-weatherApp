@@ -30,6 +30,10 @@ def input_users_profil(user_id, nama_panjang, nama_panggilan, umur):
     conn = tabel_cuaca()
 
     try:
+        if nama_panggilan == "" or nama_panjang == "" or umur == "":
+            print("ISI DENGAN BENAR, DARI DATABSE PROFIL USERS")
+            return False
+
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -38,13 +42,10 @@ def input_users_profil(user_id, nama_panjang, nama_panggilan, umur):
             """, (user_id, nama_panjang, nama_panggilan, umur)
         )
 
+        print("INI DARI INPUT TABEL DATA PROFIL USERS")
         conn.commit()
 
-        if nama_panggilan is None or nama_panjang is None or umur is None:
-            print("INI DENGAN BENAR, DARI DATABSE PROFIL USERS")
-            return False
-        else:
-            return True
+        return True
 
     finally:
         conn.close()
@@ -100,25 +101,6 @@ def validate_data_users_profil(user_id):
         conn.close()
 
 
-def tampilkan_data_users():
-    conn = tabel_cuaca()
-
-    try:
-        cursor = conn.cursor()
-        cursor.execute(
-            """
-            SELECT * FROM tabel_users_profil_cuaca_1
-            """
-        )
-
-        data = cursor.fetchall()
-        df = pd.DataFrame(
-            data, columns=["id", "user_id", "nama_panjang", "nama_panggilan", "umur"])
-        return df
-    finally:
-        conn.close()
-
-
 def ambil_data_profil_user(user_id):
     conn = tabel_cuaca()
 
@@ -136,14 +118,10 @@ def ambil_data_profil_user(user_id):
 
         if data is None:
             print(
-                "DATA DARI DATA PROFIL BELUM TERISI, ISI DULU PENGISIAN DATA PROFIL NYA")
+                "USER_ID BELUM ADA, TERJADI BUG")
             return False
 
         nama_panjang, nama_panggilan, umur = data
-
-        if all(value == None or value == "" for value in data):
-            print("SALAH SATU DATA DARI DATA PROFIL BERLUM TERISI")
-            return False
 
         print("INI DATA NAMA_PANJANG DARI DATA PROFIL", nama_panjang)
         print("INI DATA NAMA_PANGGILAN DARI DATA PROFIL", nama_panggilan)
@@ -151,28 +129,12 @@ def ambil_data_profil_user(user_id):
         print("INI DATA DARI AMBIL DATA PROFIL", data)
         return {
             "success": True,
-            "nama_panjang": data[0],
-            "nama_panggilan": data[1],
-            "umur": data[2]
+            "data_profil": {
+                "nama_panjang": data[0],
+                "nama_panggilan": data[1],
+                "umur": data[2]
+            }
         }
-
-    finally:
-        conn.close()
-
-
-def update_data_users_profil(user_id, nama_panjang, nama_panggilan, umur):
-    conn = tabel_cuaca()
-    try:
-        cursor = conn.cursor()
-        cursor.execute(
-            """
-            UPDATE tabel_users_profil_cuaca_1
-            SET nama_panjang = ?, nama_panggilan=?, umur = ?
-            WHERE user_id = ?
-            """, (user_id, nama_panjang, nama_panggilan, umur)
-        )
-
-        conn.commit()
 
     finally:
         conn.close()

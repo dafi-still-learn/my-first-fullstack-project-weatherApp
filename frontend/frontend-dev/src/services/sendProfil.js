@@ -1,7 +1,13 @@
-export async function sendProfil(user_Id, nama_panjang, nama_panggilan, umur) {
+export async function sendProfil(
+  user_Id,
+  nama_panjang,
+  nama_panggilan,
+  umur,
+  mode,
+) {
   console.log("INI DARI SENDPROFIL");
   const response = await fetch("http://localhost:8000/profil", {
-    method: "POST",
+    mode,
     headers: {
       "Content-Type": "application/json",
     },

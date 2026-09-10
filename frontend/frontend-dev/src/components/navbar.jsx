@@ -8,13 +8,11 @@ import { useNavigate } from "react-router-dom";
 function Navbar({ setWeather, data_profil }) {
   const navigate = useNavigate();
 
+  console.log("DATA PROFIL DARI NAVBAR", data_profil);
   function handleProfil() {
-    navigate(
-      "/profil" <
-        {
-          data_profil: data_profil,
-        },
-    );
+    navigate("/profil", {
+      data_profil: data_profil,
+    });
   }
   return (
     <>

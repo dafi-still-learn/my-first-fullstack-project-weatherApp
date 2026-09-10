@@ -3,7 +3,11 @@ import { useLocation } from "react-router-dom";
 
 function Profil() {
   const location = useLocation();
-  const data_profil = location.state?.data_profil;
+  const data_profil_users = location.state?.data_profil;
+
+  console.log("LOCATION", location);
+  console.log("STATE", location.state);
+  console.log("DATA NAMA PANJANG", data_profil_users?.nama_panjang);
   return (
     <>
       <section className="grid grid-cols-20 w-screen h-screen">
@@ -12,19 +16,19 @@ function Profil() {
           <h1>tes ini halaman profil</h1>
           <div className="grid grid-cols-5 gap-4">
             <img src="" alt="" className="row-span-1" />
-            <h1 className="row-span-4">{data_profil.nama_panggilan}</h1>
+            <h1 className="row-span-4">{data_profil_users?.nama_panggilan}</h1>
           </div>
           <div>
             <h1>nama panjang</h1>
-            <h2>{data_profil.nama_panjang}</h2>
+            <h2>{data_profil_users?.nama_panjang}</h2>
           </div>
           <div>
             <h1>nama panggilan</h1>
-            <h2>{data_profil.nama_panggilan}</h2>
+            <h2>{data_profil_users?.nama_panggilan}</h2>
           </div>
           <div>
             <h1>umur</h1>
-            <h2>{data_profil.umur}</h2>
+            <h2>{data_profil_users?.umur}</h2>
           </div>
           <button>ok</button>
         </section>

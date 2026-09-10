@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { sendProfil } from "../services/sendProfil";
 import "../index.css";
 
 function Make_profil({ userId, onclose }) {
@@ -8,25 +7,34 @@ function Make_profil({ userId, onclose }) {
   const [tanggalLahir, setTanggalLahir] = useState("");
 
   console.log("INI USER ID DARI PROFIL", userId);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("INI DARI FORM PROFIL", userId);
 
-    const result = await sendProfil(
-      userId,
-      namaAsli,
-      namaPanggilan,
-      tanggalLahir,
-    );
+    const response = await fetch("http://localhost:8000/profil", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_Id: userId,
+        nama_panjang: namaAsli,
+        nama_panggilan: namaPanggilan,
+        umur: tanggalLahir,
+      }),
+    });
+
+    const result = await response.json();
 
     console.log({ userId, namaAsli, namaPanggilan, tanggalLahir, result });
-    if (result === true) {
-      console.log("data sudah terisi");
-      onclick = onclose();
-    }
-
+    console.log("INI DARI RESULT POST DAN GET DATA DARI MAKE PROFIL", result);
     if (result === false) {
       console.log("data belum terisi semua");
+    }
+    if (result === true) {
+      console.log("data sudah terisi");
+      onclose();
     }
 
     console.log("ini dari profil", result);

@@ -24,20 +24,28 @@ function Login() {
     );
 
     if (result.success) {
-      const result_profil = await getDataProfil(result.user_id);
+      const result_data_profil = await getDataProfil(result.user_id);
 
-      console.log("INI DATA DARI PROFIL", result_profil);
-      if (result_profil.success) {
-        console.log("INI HASIL NYA TRUE DARI PERCABANGAN PROFIL DATAS");
+      console.log("INI DATA DARI PROFIL", result_data_profil);
+      if (result_data_profil.success) {
+        console.log(
+          "INI HASIL NYA TRUE DARI PERCABANGAN PROFIL DATAS",
+          result_data_profil,
+        );
         navigate("/dashboard", {
           state: {
             user_id: result.user_id,
-            data_profil: result_profil.data,
+            dataProfil: result_data_profil.data_profil,
           },
         });
       }
-      if (result_profil === false) {
-        console.log("INI HASIL NYA FALSE DARI PERCABANGAN PROFIL DATAS");
+
+      // MASUKKAN UPDATE PROFIL KE SINI
+      if (result_data_profil === false) {
+        console.log(
+          "INI HASIL NYA FALSE DARI PERCABANGAN PROFIL DATAS",
+          result_data_profil,
+        );
         navigate("/dashboard", {
           state: {
             user_id: result.user_id,

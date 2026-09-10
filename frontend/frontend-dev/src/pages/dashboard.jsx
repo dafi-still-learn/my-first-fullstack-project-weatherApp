@@ -16,14 +16,14 @@ function Dashboard() {
   const location = useLocation();
   const userId = location.state?.user_id;
   const profilComplete = location.state?.profil_complete;
-  const dataProfil = location.state?.data_profil;
+  const dataProfil = location.state?.dataProfil;
   const { weather, setWeather } = useOutletContext();
   const [date, setDate] = useState(new Date());
   const [selectedData, setSelectedData] = useState(null);
   const [showProfil, setShowProfil] = useState(profilComplete);
 
   console.log("ini user id dari dashboard", userId);
-
+  console.log("DATA PROFIL DARI DASHBOARD", dataProfil);
   const handleData = (date) => {
     const tanggal = date.toLocaleDateString("en-CA");
     const weatherData = weather.prakiraan.find((item) =>
