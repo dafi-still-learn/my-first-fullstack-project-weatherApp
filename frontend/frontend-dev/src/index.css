@@ -189,9 +189,23 @@ button {
   background-color: var(--light-color);
 }
 
+#analisis {
+  margin: 0;
+}
+
 #analisis section {
   border-radius: 10px;
   padding: 10px;
+}
+
+#analisis h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+#analisis h1 {
+  font-size: 18px;
+  font-weight: bold;
 }
 
 #input_search form {
@@ -269,4 +283,40 @@ button {
   width: 100px;
   height: 30px;
   background-color: var(--light-dark);
+}
+
+#profil {
+  padding: 20px;
+}
+
+#profil h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#profil div {
+  background-color: #ddd;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#profil div h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#profil button {
+  padding: 10px 20px;
+  width: 120px;
+  height: 35px;
+  text-align: center;
+  background-color: var(--light-second);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#profil button:hover {
+  background-color: var(--light-color);
 }

@@ -26,7 +26,7 @@ function Login() {
     if (result.success) {
       const result_data_profil = await getDataProfil(result.user_id);
 
-      console.log("INI DATA DARI PROFIL", result_data_profil);
+      console.log("INI DATA DARI PROFIL", result_data_profil.data_profil);
       if (result_data_profil.success) {
         console.log(
           "INI HASIL NYA TRUE DARI PERCABANGAN PROFIL DATAS",

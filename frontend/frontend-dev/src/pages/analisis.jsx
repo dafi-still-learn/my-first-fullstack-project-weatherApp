@@ -19,30 +19,35 @@ function Analisis() {
     <section className="grid grid-cols-20 w-screen h-screen relative">
       <Sidebar></Sidebar>
       <section
-        className="col-span-19 w-full h-full grid place-content-center grid-cols-2 grid-rows-2 gap-5"
+        className="col-span-19 w-full h-full flex place-content-center flex-col gap-1"
         id="analisis"
       >
-        <Cards>
-          <h1>Diagram Analisis Suhu</h1>
-          <Diagram_suhu data={weather.prakiraan} />
-        </Cards>
-        <Cards>
-          <h1>Diagram Analisis Kelembapan</h1>
-          <Diagram_kelembapan data={weather.prakiraan} />
-        </Cards>
-        <Cards>
-          <h1>Diagram Analisis Angin</h1>
-          <Diagram_angin data={weather.prakiraan} />
-        </Cards>
-        <Cards>
-          <h1>Hasil Analisis AI</h1>
-          <ChatBot setChatBot={setChatBot} weather={weather}></ChatBot>
-          {chatBot && (
-            <div>
-              <p>{chatBot}</p>
-            </div>
-          )}
-        </Cards>
+        <div>
+          <h2>analisis</h2>
+        </div>
+        <div className="w-full h-full grid grid-cols-2 grid-rows-2 gap-1">
+          <Cards>
+            <h1>Diagram Analisis Suhu</h1>
+            <Diagram_suhu data={weather.prakiraan} />
+          </Cards>
+          <Cards>
+            <h1>Diagram Analisis Kelembapan</h1>
+            <Diagram_kelembapan data={weather.prakiraan} />
+          </Cards>
+          <Cards>
+            <h1>Diagram Analisis Angin</h1>
+            <Diagram_angin data={weather.prakiraan} />
+          </Cards>
+          <Cards>
+            <h1>Hasil Analisis AI</h1>
+            <ChatBot setChatBot={setChatBot} weather={weather}></ChatBot>
+            {chatBot && (
+              <div>
+                <p>{chatBot}</p>
+              </div>
+            )}
+          </Cards>
+        </div>
       </section>
     </section>
   );

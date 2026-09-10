@@ -12,11 +12,15 @@ function Profil() {
     <>
       <section className="grid grid-cols-20 w-screen h-screen">
         <Sidebar></Sidebar>
-        <section className="grid col-span-19 gap-8 grid-cols-1" id="pengaturan">
-          <h1>tes ini halaman profil</h1>
+        <section className="grid col-span-19 gap-8 grid-cols-1" id="profil">
+          <h1>Profil</h1>
           <div className="grid grid-cols-5 gap-4">
-            <img src="" alt="" className="row-span-1" />
-            <h1 className="row-span-4">{data_profil_users?.nama_panggilan}</h1>
+            <div className="col-span-1">
+              <img src="" alt="" className="row-span-1" />
+            </div>
+            <div className="col-span-4">
+              <h1>{data_profil_users?.nama_panggilan}</h1>
+            </div>
           </div>
           <div>
             <h1>nama panjang</h1>
@@ -30,7 +34,7 @@ function Profil() {
             <h1>umur</h1>
             <h2>{data_profil_users?.umur}</h2>
           </div>
-          <button>ok</button>
+          <button>edit profil</button>
         </section>
       </section>
     </>
