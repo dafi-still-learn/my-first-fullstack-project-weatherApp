@@ -208,6 +208,20 @@ button {
   font-weight: bold;
 }
 
+#analisis div button {
+  background-color: var(--light-dark);
+  padding: 8px 30px;
+  transition: all 0.3s ease;
+}
+
+#analisis div button:hover {
+  background-color: var(--light-color);
+}
+
+#analisis #analisis-tab {
+  overflow: scroll;
+}
+
 #input_search form {
   background-color: var(--light-color);
   border-radius: 10px;

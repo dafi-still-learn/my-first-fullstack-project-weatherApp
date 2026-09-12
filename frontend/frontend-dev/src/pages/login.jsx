@@ -35,7 +35,7 @@ function Login() {
         navigate("/dashboard", {
           state: {
             user_id: result.user_id,
-            dataProfil: result_data_profil.data_profil,
+            // dataProfil: result_data_profil.data_profil,
           },
         });
       }

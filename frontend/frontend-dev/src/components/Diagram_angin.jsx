@@ -12,8 +12,8 @@ function Diagram_angin({ data }) {
   return (
     <LineChart
       style={{
-        width: "500px",
-        height: "280px",
+        width: "360px",
+        height: "200px",
         aspectRatio: 1.618,
         maxWidth: 600,
       }}

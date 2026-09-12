@@ -8,17 +8,13 @@ import { useNavigate } from "react-router-dom";
 function Navbar({ setWeather, data_profil }) {
   const navigate = useNavigate();
 
-  if (data_profil === undefined) {
-    console.log("data tidak dikenali");
-  }
+  // if (data_profil === undefined) {
+  //   console.log("data tidak dikenali");
+  // }
 
-  console.log("DATA PROFIL DARI NAVBAR", data_profil);
+  // console.log("DATA PROFIL DARI NAVBAR", data_profil);
   function handleProfil() {
-    navigate("/profil", {
-      state: {
-        data_profil: data_profil,
-      },
-    });
+    navigate("/profil");
   }
   return (
     <>
@@ -31,7 +27,7 @@ function Navbar({ setWeather, data_profil }) {
             <Button className="cursor-pointer" onClick={handleProfil}>
               <User></User>
             </Button>
-            <h3>{data_profil?.nama_panggilan}</h3>
+            <h3>{data_profil?.data_profil?.nama_panggilan}</h3>
           </div>
           <div
             className="col-span-2 flex justify-between gap-10"

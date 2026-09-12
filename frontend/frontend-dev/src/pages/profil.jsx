@@ -1,13 +1,17 @@
 import Sidebar from "../components/sidebar";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 function Profil() {
-  const location = useLocation();
-  const data_profil_users = location.state?.data_profil;
+  // const location = useLocation();
+  // const data_profil_users = location.state?.data_profil;
 
-  console.log("LOCATION", location);
-  console.log("STATE", location.state);
-  console.log("DATA NAMA PANJANG", data_profil_users?.nama_panjang);
+  const { profil } = useOutletContext();
+
+  // console.log("LOCATION", location);
+  // console.log("STATE", location.state);
+  // console.log("DATA NAMA PANJANG", data_profil_users?.nama_panjang);
+  console.log(profil);
   return (
     <>
       <section className="grid grid-cols-20 w-screen h-screen">
@@ -19,20 +23,20 @@ function Profil() {
               <img src="" alt="" className="row-span-1" />
             </div>
             <div className="col-span-4">
-              <h1>{data_profil_users?.nama_panggilan}</h1>
+              <h1>{profil?.data_profil?.nama_panggilan}</h1>
             </div>
           </div>
           <div>
             <h1>nama panjang</h1>
-            <h2>{data_profil_users?.nama_panjang}</h2>
+            <h2>{profil?.data_profil?.nama_panjang}</h2>
           </div>
           <div>
             <h1>nama panggilan</h1>
-            <h2>{data_profil_users?.nama_panggilan}</h2>
+            <h2>{profil?.data_profil?.nama_panggilan}</h2>
           </div>
           <div>
             <h1>umur</h1>
-            <h2>{data_profil_users?.umur}</h2>
+            <h2>{profil?.data_profil?.umur}</h2>
           </div>
           <button>edit profil</button>
         </section>
