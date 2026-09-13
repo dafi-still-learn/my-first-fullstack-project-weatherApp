@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 export async function sendProfil(
   user_Id,
   nama_panjang,
@@ -6,7 +8,7 @@ export async function sendProfil(
   mode,
 ) {
   console.log("INI DARI SENDPROFIL");
-  const response = await fetch("http://localhost:8000/profil", {
+  const response = await fetch(`${API_URL}/profil`, {
     mode,
     headers: {
       "Content-Type": "application/json",

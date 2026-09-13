@@ -1,3 +1,5 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
 export async function updateDataProfil(
   user_Id,
   nama_panjang,
@@ -5,7 +7,7 @@ export async function updateDataProfil(
   umur,
 ) {
   console.log("INI DARI SENDPROFIL");
-  const response = await fetch("http://localhost:8000/profil", {
+  const response = await fetch(`${API_URL}/profil`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

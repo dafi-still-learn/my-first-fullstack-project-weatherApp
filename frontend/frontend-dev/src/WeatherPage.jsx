@@ -3,6 +3,8 @@ import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { postChatAI } from "./services/postChatAI.JS";
 function WeatherPage() {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const location = useLocation();
   const [weather, setWeather] = useState(null);
   const [profil, setProfil] = useState(null);
@@ -11,7 +13,7 @@ function WeatherPage() {
   const user_id = location.state?.user_id;
 
   useEffect(() => {
-    fetch("http://localhost:8000/cuaca_terkini")
+    fetch(`${API_URL}/cuaca_terkini`)
       .then((response) => response.json())
       .then((result) => {
         if (result.length === 0) {
@@ -32,12 +34,12 @@ function WeatherPage() {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [API_URL]);
 
   useEffect(() => {
     const getData = async () => {
       const response = await fetch(
-        `http://localhost:8000/profil/data?user_id=${user_id}`,
+        `${API_URL}/profil/data?user_id=${user_id}`,
         {
           method: "GET",
         },
@@ -53,7 +55,7 @@ function WeatherPage() {
     if (user_id) {
       getData();
     }
-  }, [user_id]);
+  }, [user_id, API_URL]);
 
   console.log("DATA DARI CUACA WEATHER PAGE", weather);
 
