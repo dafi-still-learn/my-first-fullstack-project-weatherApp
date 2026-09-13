@@ -22,6 +22,7 @@ class weatherData(BaseModel):
 
 class requestChatBot(BaseModel):
     weather: list[weatherData]
+    ibukota_cuaca: str
 
 
 class GetUsers(BaseModel):

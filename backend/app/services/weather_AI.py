@@ -8,10 +8,10 @@ get_api_openAI = os.getenv('key_geminiAI')
 client = genai.Client(api_key=get_api_openAI)
 
 
-def chatBot(weather):
+def chatBot(weather, ibukota):
     if (weather):
         weather_text = f"""
-        berikan aku beberapa point dari data cuaca ini berserta nama kota nya juga dimasukkan, pertama kesimpulan kedua suhu terpanas, suhu terdingin, suhu ternyaman, ketiga rekomendasi apa yang perlu disiapkan untuk menghadapi cuaca tersebut kalau kebanyakan cuaca nya enak dan nyaman kasih ucapan selamat menikmati hari-hari mu dengan penjelasan pendek:
+        berikan aku beberapa point dari data cuaca ini kota {ibukota}, pertama kesimpulan kedua suhu terpanas, suhu terdingin, suhu ternyaman, ketiga rekomendasi apa yang perlu disiapkan untuk menghadapi cuaca tersebut kalau kebanyakan cuaca nya enak dan nyaman kasih ucapan selamat menikmati hari-hari mu dengan penjelasan pendek:
         {weather}, dan berikan juga korelasi antara setiap data nya
         """
 

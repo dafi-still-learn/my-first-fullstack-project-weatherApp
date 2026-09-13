@@ -6,6 +6,7 @@ export async function postChatAI(weather) {
     },
     body: JSON.stringify({
       weather: weather.prakiraan,
+      ibukota_cuaca: weather?.terkini.namakota_cuaca,
     }),
   });
 

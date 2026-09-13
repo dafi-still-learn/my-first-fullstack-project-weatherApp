@@ -60,7 +60,7 @@ def location_weather(data: WeatherLocation):
 
 @router.post("/weather/chat")
 def requestChatBot(data: requestChatBot):
-    result_chatBot = chatBot(data.weather)
+    result_chatBot = chatBot(data.weather, data.ibukota_cuaca)
 
     return result_chatBot
 
