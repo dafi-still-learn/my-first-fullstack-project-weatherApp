@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import Lupa_sandi from "./pages/lupa_sandi";
@@ -16,6 +16,7 @@ import Profil from "./pages/profil";
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to={"/login"} replace />}></Route>
       <Route path="/login" element={<Login />} />
       <Route path="/lupa_sandi" element={<Lupa_sandi />} />
       <Route path="/register" element={<Register />} />
