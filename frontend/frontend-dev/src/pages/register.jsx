@@ -26,7 +26,7 @@ function Register() {
   };
   return (
     <>
-      <section className="h-screen w-screen grid grid-cols-2">
+      <section className="h-screen w-screen grid grid-cols-2 overflow-hidden">
         <section id="ilustrasi_register">
           <img src={ilustasi_cuaca} alt="" />
         </section>

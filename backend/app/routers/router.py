@@ -67,17 +67,21 @@ def requestChatBot(data: requestChatBot):
 
 @router.post("/register_user")
 def getUsers(data: GetUsers):
-    validate = validate_register_users(data.email, data.username)
+    try:
+        validate = validate_register_users(data.email, data.username)
 
-    if not validate:
-        waktu = datetime.now()
-        input_akun_user(data.email, data.username, data.password, waktu)
+        if not validate:
+            waktu = datetime.now()
+            input_akun_user(data.email, data.username, data.password, waktu)
 
-        print("data berhasil dikirim")
+            print("data berhasil dikirim")
 
-        return True
-    else:
-        return False
+            return True
+        else:
+            return False
+
+    except Exception as e:
+        print("register error", e)
 
 
 @router.post("/login_user")
@@ -110,7 +114,6 @@ def profil_data_users(data: ValidateProfil):
 
 
 @router.get("/profil/data")
-# YANG INI BELUM AKU PAKAI
 def get_profil_data_users(user_id: int):
     data = ambil_data_profil_user(user_id)
 

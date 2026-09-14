@@ -70,8 +70,11 @@ function Login() {
 
   return (
     <>
-      <section className="grid grid-cols-2  h-screen w-screen place-content-center">
-        <section className="grid place-content-center h-full w-full">
+      <section className="grid grid-cols-2  h-screen w-screen place-content-center overflow-hidden">
+        <section
+          className="grid place-content-center col-span-1"
+          id="login_form"
+        >
           <form
             action=""
             onSubmit={handleSubmit}
@@ -112,7 +115,7 @@ function Login() {
             </div>
           </form>
         </section>
-        <section id="ilustrasi_login" className="relative">
+        <section id="ilustrasi_login" className="col-span-1">
           <h1>ANALISIS CUACA PINTAR</h1>
           <img src={ilustasi_aplikasi} alt="" />
         </section>
