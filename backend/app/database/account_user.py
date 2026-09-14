@@ -8,11 +8,11 @@ def buat_tabel_user():
         cursor = conn.cursor()
         cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS tabel_user_cuaca_2 (
+            CREATE TABLE IF NOT EXISTS tabel_user_cuaca_1 (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 email TEXT,
                 username TEXT,
-                password TEXT
+                password TEXT,
                 waktu TEXT)
             """)
         conn.commit()
@@ -26,7 +26,7 @@ def input_akun_user(email, username, password, waktu):
     try:
         cursor = conn.cursor()
         cursor.execute("""
-            INSERT INTO tabel_user_cuaca_2(email, username, password, waktu)
+            INSERT INTO tabel_user_cuaca_1(email, username, password, waktu)
             VALUES(?, ?, ?, ?)               
         """, (email, username, password, waktu))
         conn.commit()
@@ -52,7 +52,7 @@ def validate_register_users(email, username):
         cursor.execute(
             """
             SELECT username
-            FROM tabel_user_cuaca_2
+            FROM tabel_user_cuaca_1
             WHERE username = ?
             """, (username,)
         )
@@ -80,7 +80,7 @@ def validate_users(username, password):
         cursor.execute(
             """
             SELECT id, username, password
-            FROM tabel_user_cuaca_2
+            FROM tabel_user_cuaca_1
             WHERE username = ?
             """, (username,)
         )
@@ -109,7 +109,7 @@ def tampilkan_database_user():
         cursor = conn.cursor()
         cursor.execute(
             """
-            SELECT * tabel_user_cuaca_2
+            SELECT * tabel_user_cuaca_1
             """
         )
 

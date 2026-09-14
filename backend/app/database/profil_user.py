@@ -9,7 +9,7 @@ def tabel_users_profil():
         cursor = conn.cursor()
         cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS tabel_users_profil_cuaca_2(
+            CREATE TABLE IF NOT EXISTS tabel_users_profil_cuaca_1(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER UNIQUE,
                 nama_panjang TEXT,
@@ -37,7 +37,7 @@ def input_users_profil(user_id, nama_panjang, nama_panggilan, umur):
         cursor = conn.cursor()
         cursor.execute(
             """
-            INSERT INTO tabel_users_profil_cuaca_2(user_id, nama_panjang, nama_panggilan, umur)
+            INSERT INTO tabel_users_profil_cuaca_1(user_id, nama_panjang, nama_panggilan, umur)
             VALUES(?, ?, ?, ?)
             """, (user_id, nama_panjang, nama_panggilan, umur)
         )
@@ -57,7 +57,7 @@ def tampilkan_data_users_profil():
         cursor = conn.cursor()
         cursor.execute(
             """
-            SELECT * FROM tabel_users_profil_cuaca_2
+            SELECT * FROM tabel_users_profil_cuaca_1
             """
         )
 
@@ -79,7 +79,7 @@ def validate_data_users_profil(user_id):
         cursor.execute(
             """
             SELECT nama_panjang, nama_panggilan, umur
-            FROM tabel_users_profil_cuaca_2
+            FROM tabel_users_profil_cuaca_1
             WHERE user_id = ?
             """, (user_id, )
         )
@@ -109,7 +109,7 @@ def ambil_data_profil_user(user_id):
         cursor.execute(
             """
             SELECT nama_panjang, nama_panggilan, umur
-            FROM tabel_users_profil_cuaca_2
+            FROM tabel_users_profil_cuaca_1
             WHERE user_id = ?
             """, (user_id,)
         )
