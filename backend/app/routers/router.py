@@ -4,7 +4,7 @@ from app.schemas.schemas import WeatherSearch, WeatherLocation, requestChatBot, 
 from app.services.api_weather import weather_current, weather_forecast, weather_location_current, tiga_lokasi_terdekat
 from app.models.models import olah_data_tabel_cuaca_prakiraan, olah_data_tabel_cuaca_terkini
 from app.services.weather_AI import chatBot
-from app.database.account_user import input_akun_user, buat_tabel_user, validate_users, validate_register_users, tampilkan_database_user
+from app.database.account_user import input_akun_user, buat_tabel_user, validate_users, validate_register_users
 from app.database.profil_user import input_users_profil, tabel_users_profil, tampilkan_data_users_profil, ambil_data_profil_user
 from datetime import datetime
 router = APIRouter()
@@ -82,15 +82,16 @@ def getUsers(data: GetUsers):
 
     except Exception as e:
         print("register error", e)
+        return False
 
 
 @router.post("/login_user")
 def valdiateUsers(data: ValidateUser):
     result = validate_users(data.username, data.password)
 
+    print("DARI ENDPOINT LOGIN_USER", result)
     if result:
-        tampilkan_database_user()
-        tampilkan_data_users_profil()
+
         print("INI DARI SEND LOGIN USER_ID", result["user_id"])
         return {
             "success": result["success"],

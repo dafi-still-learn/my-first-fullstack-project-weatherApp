@@ -8,7 +8,7 @@ def buat_tabel_user():
         cursor = conn.cursor()
         cursor.execute(
             """
-            CREATE TABLE IF NOT EXISTS tabel_user_cuaca_1 (
+            CREATE TABLE IF NOT EXISTS tabel_user_cuaca_baru_1 (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 email TEXT,
                 username TEXT,
@@ -26,7 +26,7 @@ def input_akun_user(email, username, password, waktu):
     try:
         cursor = conn.cursor()
         cursor.execute("""
-            INSERT INTO tabel_user_cuaca_1(email, username, password, waktu)
+            INSERT INTO tabel_user_cuaca_baru_1(email, username, password, waktu)
             VALUES(?, ?, ?, ?)               
         """, (email, username, password, waktu))
         conn.commit()
@@ -42,7 +42,7 @@ def validate_register_users(email, username):
         cursor.execute(
             """
             SELECT email
-            FROM tabel_user_cuaca_1
+            FROM tabel_user_cuaca_baru_1
             WHERE email = ?
             """, (email,)
         )
@@ -52,7 +52,7 @@ def validate_register_users(email, username):
         cursor.execute(
             """
             SELECT username
-            FROM tabel_user_cuaca_1
+            FROM tabel_user_cuaca_baru_1
             WHERE username = ?
             """, (username,)
         )
@@ -80,7 +80,7 @@ def validate_users(username, password):
         cursor.execute(
             """
             SELECT id, username, password
-            FROM tabel_user_cuaca_1
+            FROM tabel_user_cuaca_baru_1
             WHERE username = ?
             """, (username,)
         )
@@ -102,23 +102,23 @@ def validate_users(username, password):
         conn.close()
 
 
-def tampilkan_database_user():
-    conn = tabel_cuaca()
+# def tampilkan_database_user():
+#     conn = tabel_cuaca()
 
-    try:
-        cursor = conn.cursor()
-        cursor.execute(
-            """
-            SELECT * tabel_user_cuaca_1
-            """
-        )
+#     try:
+#         cursor = conn.cursor()
+#         cursor.execute(
+#             """
+#             SELECT * FROM tabel_user_cuaca_baru_1
+#             """
+#         )
 
-        data = cursor.fetchall()
+#         data = cursor.fetchall()
 
-        df = pd.DataFrame(
-            data, columns=["id", "email", "username", "password", "waktu"])
-        print("ini dari validasi user register")
-        print(df)
+#         df = pd.DataFrame(
+#             data, columns=["id", "email", "username", "password", "waktu"])
+#         print("ini dari validasi user register")
+#         print(df)
 
-    finally:
-        conn.close()
+#     finally:
+#         conn.close()

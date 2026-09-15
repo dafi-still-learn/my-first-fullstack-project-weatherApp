@@ -16,7 +16,7 @@ export async function sendAccount(email, username, password) {
   const result = await response.json();
 
   console.log("ini dari register frontend", result);
-  if (response.ok && response.succes) {
+  if (response.ok) {
     return true;
   }
 

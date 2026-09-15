@@ -17,12 +17,11 @@ function Register() {
     e.preventDefault();
 
     const result = await sendAccount(email, username, password);
-    if (result === true) navigate("/login");
+    if (result) navigate("/login");
 
-    if (result === false) console.log("PERHATIKAN EMAIL DAN USERNAME");
+    if (!result) console.log("PERHATIKAN EMAIL DAN USERNAME");
 
     console.log("TESSSSSSS INI DARI REGISTER");
-    return result;
   };
   return (
     <>

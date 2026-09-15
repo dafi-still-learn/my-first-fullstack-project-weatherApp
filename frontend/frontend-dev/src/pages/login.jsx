@@ -13,6 +13,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    console.log("INI DARI LOGIN");
     console.log(username);
     console.log(password);
 
