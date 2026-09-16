@@ -17,9 +17,13 @@ function Register() {
     e.preventDefault();
 
     const result = await sendAccount(email, username, password);
-    if (result) navigate("/login");
-
-    if (!result) console.log("PERHATIKAN EMAIL DAN USERNAME");
+    console.log("INI DARI PAGE REGISTER", result);
+    if (result === true) {
+      console.log("PERHATIKAN EMAIL DAN USERNAME");
+    } else {
+      console.log("VALIDASI REGISTER BERHASIL");
+      navigate("/login");
+    }
 
     console.log("TESSSSSSS INI DARI REGISTER");
   };

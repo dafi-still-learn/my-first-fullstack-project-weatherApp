@@ -70,14 +70,15 @@ def getUsers(data: GetUsers):
     try:
         validate = validate_register_users(data.email, data.username)
 
-        print("HASIL DARI VALIDATE USERS", validate)
+        print("HASIL DARI VALIDATE USERS DARI REGISTER", validate)
         if not validate:
             waktu = datetime.now()
-            input_akun_user(data.email, data.username, data.password, waktu)
+            result = input_akun_user(
+                data.email, data.username, data.password, waktu)
 
             print("data berhasil dikirim")
 
-            return True
+            return result
         else:
             return False
 
@@ -99,7 +100,7 @@ def valdiateUsers(data: ValidateUser):
             "user_id": result["user_id"]
         }
 
-    else:
+    if not result:
         return False
 
 

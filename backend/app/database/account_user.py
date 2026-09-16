@@ -24,12 +24,18 @@ def buat_tabel_user():
 def input_akun_user(email, username, password, waktu):
     conn = tabel_cuaca()
     try:
+        if email == "" or username == "" or password == "":
+            print("ISI DENGNA BENAR UNTUK AKUN")
+            return False
+
         cursor = conn.cursor()
         cursor.execute("""
             INSERT INTO tabel_user_cuaca_baru_1(email, username, password, waktu)
             VALUES(?, ?, ?, ?)               
         """, (email, username, password, waktu))
         conn.commit()
+
+        return True
     finally:
         conn.close()
 
@@ -38,6 +44,10 @@ def validate_register_users(email, username):
     conn = tabel_cuaca()
 
     try:
+        if email == "" or username == "":
+            print("PERHATIKAN EMAIL DAN USERNAME")
+            return False
+
         cursor = conn.cursor()
         cursor.execute(
             """
@@ -68,7 +78,7 @@ def validate_register_users(email, username):
 
             return username
 
-        return None
+        return True
     finally:
         conn.close()
 
@@ -76,6 +86,10 @@ def validate_register_users(email, username):
 def validate_users(username, password):
     conn = tabel_cuaca()
     try:
+        if username == "" or password == "":
+            print("JANGAN ISI KOSONG PADA LOGIN")
+            return False
+
         cursor = conn.cursor()
         cursor.execute(
             """
