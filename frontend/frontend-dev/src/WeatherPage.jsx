@@ -8,6 +8,7 @@ function WeatherPage() {
   const location = useLocation();
   const [weather, setWeather] = useState(null);
   const [profil, setProfil] = useState(null);
+  const [profilUserBaru, setProfilUserBaru] = useState(null);
   const [analisisAi, setAnalisisAi] = useState(null);
   // const [loading, setLoading] = useState(true);
   const user_id = location.state?.user_id;
@@ -70,7 +71,15 @@ function WeatherPage() {
   return (
     <>
       <Outlet
-        context={{ weather, setWeather, profil, analisisAi, getDataAnalisis }}
+        context={{
+          weather,
+          setWeather,
+          profil,
+          analisisAi,
+          getDataAnalisis,
+          profilUserBaru,
+          setProfilUserBaru,
+        }}
       />
     </>
   );

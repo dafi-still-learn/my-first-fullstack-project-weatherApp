@@ -17,7 +17,8 @@ function Dashboard() {
   const userId = location.state?.user_id;
   const profilComplete = location.state?.profil_complete;
   // const dataProfil = location.state?.dataProfil;
-  const { weather, setWeather, profil } = useOutletContext();
+  const { weather, setWeather, profil, setProfilUserBaru, profilUserBaru } =
+    useOutletContext();
   const [date, setDate] = useState(new Date());
   const [selectedData, setSelectedData] = useState(null);
   const [showProfil, setShowProfil] = useState(profilComplete);
@@ -36,14 +37,22 @@ function Dashboard() {
     <>
       <section id="dashboard" className="grid grid-cols-20 h-screen w-screen">
         {showProfil && (
-          <Make_profil userId={userId} onclose={() => setShowProfil(false)} />
+          <Make_profil
+            userId={userId}
+            onclose={() => setShowProfil(false)}
+            setProfilUserBaru={setProfilUserBaru}
+          />
         )}
         <Sidebar></Sidebar>
         <section
           id="home"
           className="col-span-14 grid grid-rows-7 h-full w-full gap-5"
         >
-          <Navbar setWeather={setWeather} data_profil={profil}></Navbar>
+          <Navbar
+            setWeather={setWeather}
+            data_profil={profil}
+            data_profil_user_baru={profilUserBaru}
+          ></Navbar>
           <div className="grid grid-cols-5 h-full w-full row-span-3 gap-5">
             <Cards className=" col-span-2 rounded-2xl w-full h-full grid grid-cols-1 place-content-center">
               <div>

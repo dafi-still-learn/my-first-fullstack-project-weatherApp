@@ -71,7 +71,7 @@ def getUsers(data: GetUsers):
         validate = validate_register_users(data.email, data.username)
 
         print("HASIL DARI VALIDATE USERS DARI REGISTER", validate)
-        if not validate:
+        if validate:
             waktu = datetime.now()
             result = input_akun_user(
                 data.email, data.username, data.password, waktu)

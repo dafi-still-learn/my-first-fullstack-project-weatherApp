@@ -20,9 +20,9 @@ function Register() {
     console.log("INI DARI PAGE REGISTER", result);
     if (result === true) {
       console.log("PERHATIKAN EMAIL DAN USERNAME");
+      navigate("/login");
     } else {
       console.log("VALIDASI REGISTER BERHASIL");
-      navigate("/login");
     }
 
     console.log("TESSSSSSS INI DARI REGISTER");

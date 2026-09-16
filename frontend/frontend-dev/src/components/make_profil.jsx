@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "../index.css";
+import { getDataProfil } from "../services/getDataProfil";
 
-function Make_profil({ userId, onclose }) {
+function Make_profil({ userId, onclose, setProfilUserBaru }) {
   const [namaAsli, setNamaAsli] = useState("");
   const [namaPanggilan, setNamaPanggilan] = useState("");
   const [tanggalLahir, setTanggalLahir] = useState("");
@@ -38,6 +39,13 @@ function Make_profil({ userId, onclose }) {
     }
 
     console.log("ini dari profil", result);
+
+    const result_data_profil = await getDataProfil(userId);
+
+    setProfilUserBaru(result_data_profil);
+    console.log(result_data_profil);
+
+    // SELANJUTNYA AMBIL DATA YANG BARU DIBUAT TANPA LOGIN LAGI KETIKA MENEKAN FORM
   };
 
   return (

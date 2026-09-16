@@ -5,7 +5,7 @@ import "../index.css";
 import { User } from "@boxicons/react";
 import { useNavigate } from "react-router-dom";
 
-function Navbar({ setWeather, data_profil }) {
+function Navbar({ setWeather, data_profil, data_profil_user_baru }) {
   const navigate = useNavigate();
 
   // if (data_profil === undefined) {
@@ -27,6 +27,7 @@ function Navbar({ setWeather, data_profil }) {
             <Button className="cursor-pointer" onClick={handleProfil}>
               <User></User>
             </Button>
+            <h3>{data_profil_user_baru?.data_profil?.nama_panggilan}</h3>
             <h3>{data_profil?.data_profil?.nama_panggilan}</h3>
           </div>
           <div
