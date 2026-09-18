@@ -5,12 +5,15 @@ import { useOutletContext } from "react-router-dom";
 import Diagram_suhu from "../components/diagarm_suhu";
 import Diagram_kelembapan from "../components/diagran_kelembapan";
 import Diagram_angin from "../components/Diagram_angin";
+// import ReactMarkdown from "react-markdown";
 // import ChatBot from "../components/chat_AI";
 // import { useState } from "react";
 
 function Analisis() {
   const { weather, analisisAi, getDataAnalisis } = useOutletContext();
   // const [chatBot, setChatBot] = useState(null);
+
+  console.log("TYPE DATA DARI ANALISIS AI", typeof analisisAi);
 
   console.log(getDataAnalisis);
   if (!weather) {
@@ -21,7 +24,7 @@ function Analisis() {
     <section className="grid grid-cols-20 w-screen h-screen relative overflow-hidden">
       <Sidebar></Sidebar>
       <section
-        className="col-span-19 w-full h-full min-w-0 min-h-0 flex place-content-center flex-col gap-1  overflow-y-auto"
+        className="col-span-19 w-full h-full min-w-0 min-h-0 flex justify-start flex-col gap-1  overflow-y-auto"
         id="analisis"
       >
         <div>
@@ -47,16 +50,17 @@ function Analisis() {
               <h1>Hasil Analisis AI</h1>
               <button onClick={getDataAnalisis}>analisis</button>
               <div>
+                {/* <ReactMarkdown> */}
                 <p>{analisisAi}</p>
+                {console.log("TYPE DATA DARI ANALISIS AI", typeof analisisAi)}
+                {/* {console.log(
+                  "KEYS OBJECT DARI ANALISIS AI",
+                  Object.keys(analisisAi),
+                )} */}
+                {/* </ReactMarkdown> */}
               </div>
             </Cards>
           </div>
-          {/* <ChatBot setChatBot={setChatBot} weather={weather}></ChatBot>
-            {chatBot && (
-              <div>
-                <p>{chatBot}</p>
-              </div>
-            )} */}
         </div>
       </section>
     </section>

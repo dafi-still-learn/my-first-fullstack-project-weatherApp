@@ -23,23 +23,25 @@ function Profil() {
               <img src="" alt="" className="row-span-1" />
             </div>
             <div className="col-span-4">
-              <h1>{profil?.data_profil?.nama_panggilan}</h1>
-              <h1>{profilUserBaru.data_profil?.nama_panggilan}</h1>
+              <h1>
+                {profil?.data_profil?.nama_panggilan ||
+                  profilUserBaru?.data_profil?.nama_panggilan}
+              </h1>
             </div>
           </div>
           <div>
             <h1>nama panjang</h1>
-            <h2>{profilUserBaru.data_profil?.nama_panjang}</h2>
+            <h2>{profilUserBaru?.data_profil?.nama_panjang}</h2>
             <h2>{profil?.data_profil?.nama_panjang}</h2>
           </div>
           <div>
             <h1>nama panggilan</h1>
-            <h2>{profilUserBaru.data_profil?.nama_panggilan}</h2>
+            <h2>{profilUserBaru?.data_profil?.nama_panggilan}</h2>
             <h2>{profil?.data_profil?.nama_panggilan}</h2>
           </div>
           <div>
             <h1>umur</h1>
-            <h2>{profilUserBaru.data_profil?.umur}</h2>
+            <h2>{profilUserBaru?.data_profil?.umur}</h2>
             <h2>{profil?.data_profil?.umur}</h2>
           </div>
           <button>edit profil</button>

@@ -67,6 +67,7 @@ function WeatherPage() {
 
     console.log("ini dari analisis ai weather page ");
     console.log("data berubah");
+    console.log("OBJRCT DARI ANALISIS AI", Object.keys(analisisAi));
   }
   return (
     <>
