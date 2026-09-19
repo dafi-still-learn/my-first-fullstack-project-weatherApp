@@ -1,6 +1,6 @@
 import pandas as pd
 from math import radians, sin, cos, sqrt, atan2
-from app.services.api_weather import tiga_lokasi_terdekat
+from app.services.api_weather import tiga_lokasi_terdekat, weather_current
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -51,7 +51,7 @@ def membuat_jarak_km(lat_user, lon_user):
 
 
 def ambil_tiga_daerah_terdekat():
-    data = df.sort_values("jarak_km").head(3)
+    data = df.sort_values("jarak_km").head(18)
 
     return data.to_dict(orient="records")
 
@@ -66,6 +66,36 @@ def kelola_data_daerah_terdekat():
               )
         hasil_data_cauca_terdekat.append(tiga_lokasi_terdekat(item['latitude'], item['longitude'])
                                          )
-        # ambil_tiga_daerah_terdekat()
+        ambil_tiga_daerah_terdekat()
 
     return hasil_data_cauca_terdekat
+
+
+def fix_duplicate_daerah():
+    daerah_terpilih = []
+    nama_kota_yang_sdh_ada = set()
+    data_cuaca_daerah_fix = []
+
+    data = ambil_tiga_daerah_terdekat()
+    for item in data:
+        nama = item['name']
+
+        if nama not in nama_kota_yang_sdh_ada:
+            daerah_terpilih.append(item)
+            nama_kota_yang_sdh_ada.add(nama)
+
+        if len(daerah_terpilih) == 18:
+            break
+
+    print("INI DATA DARI FITLER DAERAH", daerah_terpilih)
+
+    for item in daerah_terpilih:
+        data_daerah_cauca_fix = tiga_lokasi_terdekat(
+            item['latitude'], item['longitude'])
+
+        if data_daerah_cauca_fix is None:
+            continue
+
+        data_cuaca_daerah_fix.append(data_daerah_cauca_fix)
+
+    return data_cuaca_daerah_fix

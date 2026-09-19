@@ -20,10 +20,8 @@ function Location() {
         const result = await sendLocation(coords.latitude, coords.longitude);
         // console.log("DATA BACKEND:", result);
         // console.log("DATA KOTA TERDEKAT", result?.data_jarak_kota_terdekat);
-        console.log(
-          "DATA CUACA DAERAH TERDEKAT",
-          result?.data_cuaca_daerah_terdekat,
-        );
+        console.log("DATA CUACA DAERAH TERDEKAT", result?.fix_daerah);
+
         setWeatherLocation(result?.data_cuaca_daerah_terdekat);
       } catch (error) {
         console.error(error);

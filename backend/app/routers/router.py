@@ -6,10 +6,9 @@ from app.models.models import olah_data_tabel_cuaca_prakiraan, olah_data_tabel_c
 from app.services.weather_AI import chatBot
 from app.database.account_user import input_akun_user, buat_tabel_user, validate_users, validate_register_users
 from app.database.profil_user import input_users_profil, tabel_users_profil, tampilkan_data_users_profil, ambil_data_profil_user
-from data.koordinat_wilayah import membuat_jarak_km, ambil_tiga_daerah_terdekat, kelola_data_daerah_terdekat
+from data.koordinat_wilayah import membuat_jarak_km, kelola_data_daerah_terdekat, fix_duplicate_daerah
 from datetime import datetime
 router = APIRouter()
-
 
 buat_tabel_cuaca_terkini()
 buat_tabel_cuaca_prakiraan()
@@ -52,17 +51,17 @@ def location_weather(data: WeatherLocation):
     tiga_data_weather_location_current = tiga_lokasi_terdekat(
         data.latitude, data.longitude
     )
-
-    # jarak_user_dengan_setiap_wilayah(data.latitude, data.longitude)
     membuat_jarak_km(data.latitude, data.longitude)
-
-    data_kota_terdekat = ambil_tiga_daerah_terdekat()
+    # jarak_user_dengan_setiap_wilayah(data.latitude, data.longitude)
     data_cuaca_kota_terdekat = kelola_data_daerah_terdekat()
+    fix_duplicate_daerah()
+    fix_daerah_duplicate = fix_duplicate_daerah()
     return {
         'data_lokasi': data_weather_location_current,
         'tiga_lokasi_terdekat': tiga_data_weather_location_current,
-        'data_jarak_kota_terdekat': data_kota_terdekat,
-        'data_cuaca_daerah_terdekat': data_cuaca_kota_terdekat
+        # 'data_jarak_kota_terdekat': data_kota_terdekat,
+        'data_cuaca_daerah_terdekat': data_cuaca_kota_terdekat,
+        'fix_daerah': fix_daerah_duplicate
     }
 
 

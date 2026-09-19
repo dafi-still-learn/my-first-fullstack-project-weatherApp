@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 function WeatherLocation() {
   console.log("tes ini dari weather location");
-  const [WeatherLocation, setWeatherLocation] = useState(null);
+  const [WeatherLocation, setWeatherLocation] = useState([]);
 
   return (
     <>
