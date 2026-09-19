@@ -104,7 +104,7 @@ def tiga_lokasi_terdekat(latitude, longitude):
 
     }
     responses_weather = rq.get(
-        API_URL_WEATHER, params=params_weather, timeout=60)
+        API_URL_WEATHER, params=params_weather, timeout=10)
     responses_weather.raise_for_status()
     data_weather = responses_weather.json()
 

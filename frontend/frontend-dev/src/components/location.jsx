@@ -18,9 +18,13 @@ function Location() {
     async function getWeatherLocation() {
       try {
         const result = await sendLocation(coords.latitude, coords.longitude);
-        console.log("DATA BACKEND:", result);
-
-        setWeatherLocation(result);
+        // console.log("DATA BACKEND:", result);
+        // console.log("DATA KOTA TERDEKAT", result?.data_jarak_kota_terdekat);
+        console.log(
+          "DATA CUACA DAERAH TERDEKAT",
+          result?.data_cuaca_daerah_terdekat,
+        );
+        setWeatherLocation(result?.data_cuaca_daerah_terdekat);
       } catch (error) {
         console.error(error);
       } finally {
@@ -30,15 +34,15 @@ function Location() {
     getWeatherLocation();
   }, [coords, setWeatherLocation]);
   if (loading) {
-    console.log("data sedang diolah");
-    // return (
-    //   <>
-    //     <div>
-    //       <h1>DATA SEDANG DIOLAHHHHHHHHHHHHHHH</h1>
-    //     </div>
-    //     ;
-    //   </>
-    // );
+    // console.log("data sedang diolah");
+    return (
+      <>
+        <div>
+          <h1>DATA SEDANG DIOLAHHHHHHHHHHHHHHH</h1>
+        </div>
+        ;
+      </>
+    );
   }
   return null;
 }

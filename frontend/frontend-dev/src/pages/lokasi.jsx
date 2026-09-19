@@ -23,28 +23,28 @@ function Lokasi_rekomendasi() {
           <Cards></Cards>
           <div className="grid grid-cols-3 gap-5">
             <Cards>
-              <h1>{WeatherLocation?.data_lokasi?.namakota_cuaca}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.waktu}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.cuaca}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.penjelasan}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.kelembapan}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.angin}</h1>
+              <h1>{WeatherLocation?.namakota_cuaca}</h1>
+              <h1>{WeatherLocation?.waktu}</h1>
+              <h1>{WeatherLocation?.cuaca}</h1>
+              <h1>{WeatherLocation?.penjelasan}</h1>
+              <h1>{WeatherLocation?.kelembapan}</h1>
+              <h1>{WeatherLocation?.angin}</h1>
             </Cards>
             <Cards>
-              <h1>{WeatherLocation?.data_lokasi?.namakota_cuaca}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.waktu}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.cuaca}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.penjelasan}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.kelembapan}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.angin}</h1>
+              <h1>{WeatherLocation?.namakota_cuaca}</h1>
+              <h1>{WeatherLocation?.waktu}</h1>
+              <h1>{WeatherLocation?.cuaca}</h1>
+              <h1>{WeatherLocation?.penjelasan}</h1>
+              <h1>{WeatherLocation?.kelembapan}</h1>
+              <h1>{WeatherLocation?.angin}</h1>
             </Cards>
             <Cards>
-              <h1>{WeatherLocation?.data_lokasi?.namakota_cuaca}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.waktu}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.cuaca}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.penjelasan}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.kelembapan}</h1>
-              <h1>{WeatherLocation?.data_lokasi?.angin}</h1>
+              <h1>{WeatherLocation?.namakota_cuaca}</h1>
+              <h1>{WeatherLocation?.waktu}</h1>
+              <h1>{WeatherLocation?.cuaca}</h1>
+              <h1>{WeatherLocation?.penjelasan}</h1>
+              <h1>{WeatherLocation?.kelembapan}</h1>
+              <h1>{WeatherLocation?.angin}</h1>
             </Cards>
           </div>
         </section>

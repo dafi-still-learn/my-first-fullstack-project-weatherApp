@@ -1,8 +1,10 @@
 import pandas as pd
 from math import radians, sin, cos, sqrt, atan2
+from app.services.api_weather import tiga_lokasi_terdekat
+from pathlib import Path
 
-df = pd.read_csv("daftar-nama-daerah.csv")
-
+BASE_DIR = Path(__file__).resolve().parent
+df = pd.read_csv(BASE_DIR / "koordinat.csv")
 # MENGHITUNG JARAK
 
 
@@ -26,24 +28,22 @@ def jarak_wilayah_dari_users(lat1, lon1, lat2, lon2):
     return R * c
 
 
-hitung_jarak = jarak_wilayah_dari_users()
+# def jarak_user_dengan_setiap_wilayah(lat_user, lon_user):
+#     for _, row in df.iterrows():
+#         lat_daerah = row['latitude']
+#         lon_daerah = row['longitude']
 
+#         jarak = jarak_wilayah_dari_users(
+#             lat_user, lon_user, lat_daerah, lon_daerah)
 
-def jarak_user_dengan_setiap_wilayah(lat_user, lon_user):
-    for _, row in df.iterrows():
-        lat_daerah = row['latitude']
-        lon_daerah = row['longitude']
+#         print(df)
+#         print(row['name'], jarak)
 
-        jarak = jarak_wilayah_dari_users(
-            lat_user, lon_user, lat_daerah, lon_daerah)
-
-        print(row['name'], jarak)
-
-        return jarak
+#         return jarak
 
 
 def membuat_jarak_km(lat_user, lon_user):
-    df["jarak_km"] = df.apply(lambda row: hitung_jarak(
+    df["jarak_km"] = df.apply(lambda row: jarak_wilayah_dari_users(
         lat_user, lon_user, row['latitude'], row['longitude']
     ), axis=1)
 
@@ -51,4 +51,21 @@ def membuat_jarak_km(lat_user, lon_user):
 
 
 def ambil_tiga_daerah_terdekat():
-    return df.sort_values("jarak_km").head(3)
+    data = df.sort_values("jarak_km").head(3)
+
+    return data.to_dict(orient="records")
+
+
+def kelola_data_daerah_terdekat():
+    data = ambil_tiga_daerah_terdekat()
+    hasil_data_cauca_terdekat = []
+
+    for item in data:
+        print(type(item), item['latitude'], item['longitude'])
+        print(tiga_lokasi_terdekat(item['latitude'], item['longitude'])
+              )
+        hasil_data_cauca_terdekat.append(tiga_lokasi_terdekat(item['latitude'], item['longitude'])
+                                         )
+        # ambil_tiga_daerah_terdekat()
+
+    return hasil_data_cauca_terdekat
